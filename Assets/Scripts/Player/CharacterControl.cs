@@ -40,6 +40,11 @@ public class CharacterControl : MonoBehaviour
     private Rigidbody bodyRigid;
 
 
+    [Header("Reference to other components")]
+    [HideInInspector] public CharacterSwallow _characterSwallow;
+    [HideInInspector] public GravityBody _characterBody;
+    [HideInInspector] public GravityAttractor _characterAttractor;
+
     #region PlayerStates
     private PlayerStates _currentPlayerState;
 
@@ -95,6 +100,12 @@ public class CharacterControl : MonoBehaviour
         _swallowTimer = swallowTimer;
 
         SetState(PlayerStates.Move);
+
+        _characterSwallow = GetComponent<CharacterSwallow>();
+        _characterSwallow.parent = this;
+
+        _characterBody = GetComponent<GravityBody>();
+        _characterAttractor = GetComponent<GravityAttractor>();
     }
     
     void Update()
