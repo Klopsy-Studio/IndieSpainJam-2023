@@ -11,9 +11,15 @@ public class CharacterControl : MonoBehaviour
     private float speed;
 
     [Header("Player Events")]
+
     [SerializeField] UnityEvent changeToMove;
+    [SerializeField] UnityEvent exitMove;
     [SerializeField] UnityEvent changeToSwallow;
+    [SerializeField] UnityEvent exitSwallow;
+
     [SerializeField] UnityEvent changeToDeath;
+    [SerializeField] UnityEvent exitDeath;
+
 
     [Header("Swallow Variables")]
 
@@ -46,6 +52,20 @@ public class CharacterControl : MonoBehaviour
 
         set
         {
+            switch (_currentPlayerState)
+            {
+                case PlayerStates.Move:
+                    exitMove.Invoke();
+                    break;
+                case PlayerStates.Swallow:
+                    exitSwallow.Invoke();
+                    break;
+                case PlayerStates.Death:
+                    exitDeath.Invoke();
+                    break;
+                default:
+                    break;
+            }
             _currentPlayerState = value;
 
             switch (_currentPlayerState)
