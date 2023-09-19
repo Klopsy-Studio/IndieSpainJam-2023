@@ -451,13 +451,13 @@ GameObject:
   - component: {fileID: 1885311629}
   - component: {fileID: 1885311628}
   - component: {fileID: 1885311627}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: METEOR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1885311627
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -470,6 +470,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bde7d91ae16bfc4298218dfa9a11f4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  velocity: 0.01
 --- !u!65 &1885311628
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -542,7 +543,7 @@ Transform:
   m_GameObject: {fileID: 1885311626}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2.606929, y: 4.5857754, z: -12.334931}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 5, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
