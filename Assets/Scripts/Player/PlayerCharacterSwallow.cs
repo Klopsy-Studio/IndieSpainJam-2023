@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterSwallow : MonoBehaviour
+public class PlayerCharacterSwallow : MonoBehaviour
 {
-    [HideInInspector] public CharacterControl parent;
+    [HideInInspector] public PlayerCharacter parent;
     [SerializeField] Collider swallowArea;
 
     bool canSwallow;
@@ -45,7 +45,7 @@ public class CharacterSwallow : MonoBehaviour
                         if (!objectsAttracted.Contains(newObject))
                         {
                             objectsAttracted.Add(newObject);
-                            newObject.objectGravityBody.attractor = parent._characterAttractor;
+                            newObject.objectGravityBody.attractor = parent._playerCharacterAttractor;
                         }
 
                     }
@@ -71,11 +71,8 @@ public class CharacterSwallow : MonoBehaviour
                             objectsAttracted.Remove(newObject);
                             Destroy(newObject.gameObject);
                         }
-
                     }
-
                 }
-
             }
         }
     }
