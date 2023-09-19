@@ -7,6 +7,7 @@ public class GravityBody : MonoBehaviour
     public GravityAttractor attractor;
 
     public Rigidbody body;
+    public bool enableAttraction = true;
     void Start()
     {
         body = GetComponent<Rigidbody>();
@@ -17,7 +18,10 @@ public class GravityBody : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        attractor.Attract(transform, body);
+        if (enableAttraction)
+        {
+            attractor.Attract(transform, body);
+        }
     }
 
 
