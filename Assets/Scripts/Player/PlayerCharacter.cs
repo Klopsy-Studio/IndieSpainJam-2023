@@ -80,13 +80,18 @@ public class PlayerCharacter : MonoBehaviour
 
     void Start()
     {
-        //bodyRigid = GetComponent<Rigidbody>();
-        //currentMoveSpeed = moveSpeed;
-
         _swallowCooldown = swallowCooldown;
         _swallowTimer = swallowTimer;
 
         SetState(PlayerStates.Move);
+
+        _playerCharacterAttractor = GetComponent<GravityAttractor>();
+
+        _playerCharacterMovement = GetComponent<PlayerCharacterMovement>();
+
+        _playerCharacterSwallow = GetComponent<PlayerCharacterSwallow>();
+        _playerCharacterSwallow.parent = this;
+
     }
 
 
