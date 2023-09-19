@@ -468,7 +468,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerCharacter: {fileID: 2327897416030313403}
-  rigidbody: {fileID: 7897378056007283798}
+  rigidbodyCmp: {fileID: 7897378056007283798}
   moveSpeed: 5
   swallowMoveSpeed: 2
   model: {fileID: 2327897415442088780}

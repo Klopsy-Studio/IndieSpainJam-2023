@@ -6,7 +6,7 @@ public class PlayerCharacterMovement : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private PlayerCharacter playerCharacter;
-    [SerializeField] private Rigidbody rigidbody;
+    [SerializeField] private Rigidbody rigidbodyCmp;
 
     [Header("Parameters")]
     [SerializeField] float moveSpeed;
@@ -32,9 +32,10 @@ public class PlayerCharacterMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rigidbody.MovePosition(rigidbody.position + transform.TransformDirection(moveDirection * currentMoveSpeed * Time.deltaTime));
+        rigidbodyCmp.MovePosition(rigidbodyCmp.position + transform.TransformDirection(moveDirection * currentMoveSpeed * Time.deltaTime));
 
-        model.transform.localRotation = Quaternion.LookRotation(moveDirection.normalized*rotationSpeed, Vector3.up);
+        if (moveDirection.magnitude > 0)
+            model.transform.localRotation = Quaternion.LookRotation(moveDirection.normalized*rotationSpeed, Vector3.up);
 
         //model.transform.rotation = Quaternion.LookRotation(moveDirection, transform.up);
     }
@@ -55,10 +56,7 @@ public class PlayerCharacterMovement : MonoBehaviour
     }
 
     public void ChangeToMoveSpeed() { currentMoveSpeed = moveSpeed; }
-    public void ChangeToSwallowSpeed()
-    {
-        currentMoveSpeed = swallowMoveSpeed;
-    }
+    public void ChangeToSwallowSpeed() { currentMoveSpeed = swallowMoveSpeed; }
 
 
 
