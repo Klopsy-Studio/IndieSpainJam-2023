@@ -20,6 +20,9 @@ public class CharacterController : MonoBehaviour
     private void FixedUpdate()
     {
         bodyRigid.MovePosition(bodyRigid.position + transform.TransformDirection(moveDirection * speed * Time.deltaTime));
+
+        Quaternion toRotation = Quaternion.LookRotation(moveDirection, transform.up);
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, 1f * Time.deltaTime);
     }
 }
 
