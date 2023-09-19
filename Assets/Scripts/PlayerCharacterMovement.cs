@@ -16,6 +16,8 @@ public class PlayerCharacterMovement : MonoBehaviour
 
     public GameObject model;
 
+    [SerializeField] float rotationSpeed;
+
     private void Start()
     {
         currentMoveSpeed = moveSpeed;
@@ -32,7 +34,7 @@ public class PlayerCharacterMovement : MonoBehaviour
     {
         rigidbody.MovePosition(rigidbody.position + transform.TransformDirection(moveDirection * currentMoveSpeed * Time.deltaTime));
 
-        model.transform.localRotation = Quaternion.LookRotation(moveDirection.normalized, Vector3.up);
+        model.transform.localRotation = Quaternion.LookRotation(moveDirection.normalized*rotationSpeed, Vector3.up);
 
         //model.transform.rotation = Quaternion.LookRotation(moveDirection, transform.up);
     }
