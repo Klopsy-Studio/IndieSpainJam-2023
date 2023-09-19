@@ -3,41 +3,30 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class CharacterControl : MonoBehaviour
+public class PlayerCharacter : MonoBehaviour
 {
-    [Header("PlayerSpeeds")]
-    [SerializeField] float moveSpeed;
-    [SerializeField] float swallowSpeed;
-    private float speed;
+    [Header("Referencess")]
+    [SerializeField] private PlayerCharacterMovement playerCharacterMovement;
+    [SerializeField] private PlayerCharacterSwallow playerCharacterSwallow;
 
     [Header("Player Events")]
-
     [SerializeField] UnityEvent changeToMove;
     [SerializeField] UnityEvent exitMove;
     [SerializeField] UnityEvent changeToSwallow;
     [SerializeField] UnityEvent exitSwallow;
-
     [SerializeField] UnityEvent changeToDeath;
     [SerializeField] UnityEvent exitDeath;
 
-
     [Header("Swallow Variables")]
-
     [SerializeField] float swallowCooldown;
     [SerializeField] float swallowTimer;
     float _swallowCooldown;
     float _swallowTimer;
-
-
     bool swallowing;
     bool swallowInCooldown = false;
-    //bool CanSwallow => ;
 
-
-
-
-    private Vector3 moveDirection;
-    private Rigidbody bodyRigid;
+    //private Vector3 moveDirection;
+    //private Rigidbody bodyRigid;
 
 
     #region PlayerStates
@@ -86,10 +75,12 @@ public class CharacterControl : MonoBehaviour
 
     }
     #endregion
+
+
     void Start()
     {
-        bodyRigid = GetComponent<Rigidbody>();
-        speed = moveSpeed;
+        //bodyRigid = GetComponent<Rigidbody>();
+        //currentMoveSpeed = moveSpeed;
 
         _swallowCooldown = swallowCooldown;
         _swallowTimer = swallowTimer;
@@ -97,9 +88,10 @@ public class CharacterControl : MonoBehaviour
         SetState(PlayerStates.Move);
     }
     
+
     void Update()
     {
-        moveDirection = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")).normalized;
+        //moveDirection = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")).normalized;
 
         if (!swallowInCooldown && Input.GetKey(KeyCode.Mouse0))
         {
@@ -123,7 +115,6 @@ public class CharacterControl : MonoBehaviour
             SetState(PlayerStates.Move);
         }
 
-
         if (swallowInCooldown)
         {
             if (HandleSwallowCooldown())
@@ -132,6 +123,11 @@ public class CharacterControl : MonoBehaviour
             }
         }
     }
+    public void SetState(PlayerStates state)
+    {
+        CurrentPlayerState = state; 
+    }
+
     public void EndSwallowCooldown()
     {
         ResetSwallowCooldownValue();
@@ -149,13 +145,11 @@ public class CharacterControl : MonoBehaviour
         _swallowTimer -= Time.deltaTime;
         return _swallowTimer <= 0;
     }
-
     public bool HandleSwallowCooldown()
     {
         _swallowCooldown -= Time.deltaTime;
         return _swallowCooldown <= 0;
     }
-
     public void ResetSwallowCooldownValue()
     {
         _swallowCooldown = swallowCooldown;
@@ -167,29 +161,13 @@ public class CharacterControl : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        bodyRigid.MovePosition(bodyRigid.position + transform.TransformDirection(moveDirection * speed * Time.deltaTime));
-    }
-
-
-    public void SetState(PlayerStates state)
-    {
-        CurrentPlayerState = state; 
-    }
-
-    public void ChangeToMoveSpeed()
-    {
-        speed = moveSpeed;
-    }
-
-    public void ChangeToSwallowSpeed()
-    {
-        speed = swallowSpeed;
+        //bodyRigid.MovePosition(bodyRigid.position + transform.TransformDirection(moveDirection * currentMoveSpeed * Time.deltaTime));
     }
 
 
     public void ChangeMaterial(Material material)
     {
-        GetComponent<MeshRenderer>().material = material;
+        GetComponentInChildren<MeshRenderer>().material = material;
     }
 }
 

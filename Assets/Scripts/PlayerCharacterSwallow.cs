@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterSwallow : MonoBehaviour
+public class PlayerCharacterSwallow : MonoBehaviour
 {
-    [SerializeField] Collider swallowArea;
-
-    bool canSwallow;
+    [SerializeField] private Collider swallowArea;
+    private bool canSwallow;
+    
     public void EndSwallow()
     {
         swallowArea.enabled = false;
@@ -16,12 +16,6 @@ public class CharacterSwallow : MonoBehaviour
     {
         swallowArea.enabled = true;
         canSwallow = true;
-    }
-
-
-    private void Update()
-    {
-        
     }
 
     private void OnTriggerEnter(Collider other)
