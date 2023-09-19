@@ -15,7 +15,7 @@ public class FallingObject : MonoBehaviour
         Vector3 dir = Vector3.zero - transform.position;
         if(Physics.Raycast(transform.position, dir, out raycastHit, 2f))
         {
-            Debug.Log(raycastHit.collider.gameObject.name);
+            //TODO debe detectar al planeta
             DeactivateItself();
         }
 

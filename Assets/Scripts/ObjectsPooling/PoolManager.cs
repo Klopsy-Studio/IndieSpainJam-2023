@@ -10,6 +10,7 @@ public class PoolManager : MonoBehaviour
     public int poolSize;
     private Queue<GameObject> objPool = new Queue<GameObject>();
 
+    [Header("Spawn Area")]
     [SerializeField] float xOffset = 15f;
     [SerializeField] float yOffset = 15f;
     [SerializeField] float zOffset = 1f;
