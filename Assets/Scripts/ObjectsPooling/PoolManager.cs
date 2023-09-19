@@ -22,6 +22,10 @@ public class PoolManager : MonoBehaviour
         for (int i = 0; i < poolSize; i++)
         {
             GameObject newObj = Instantiate(objPrefab, transform);
+            if(newObj.TryGetComponent(out FallingObject fallingObject))
+            {
+                fallingObject.Init(this);
+            }
             objPool.Enqueue(newObj);
             newObj.SetActive(false);
         }   
@@ -40,7 +44,7 @@ public class PoolManager : MonoBehaviour
     public void RandomSpawns()
     {
         Vector3 newRandomPos = transform.position + new Vector3 (Random.Range(-xOffset, xOffset), Random.Range(-yOffset, yOffset), Random.Range(-zOffset, zOffset));
-        GameObject newObject = GetObjFromPool(newRandomPos, Quaternion.identity); 
+        GetObjFromPool(newRandomPos, Quaternion.identity); 
     }
 
     public GameObject GetObjFromPool(Vector3 newPos, Quaternion newRotation)
