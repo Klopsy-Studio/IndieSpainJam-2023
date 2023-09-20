@@ -9,13 +9,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5586010498298921216}
-  - component: {fileID: 4797960975346714771}
-  - component: {fileID: 3481692396801268237}
   - component: {fileID: 223678049431871650}
   - component: {fileID: 2036569995813431525}
-  m_Layer: 0
+  - component: {fileID: -5058912969427607108}
+  - component: {fileID: -4199573910116541493}
+  m_Layer: 2
   m_Name: Anvil
-  m_TagString: Untagged
+  m_TagString: Object
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -36,38 +36,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!54 &4797960975346714771
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8977407399122305289}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!114 &3481692396801268237
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8977407399122305289}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 84b51fd18215b0140b1e662dc84ce854, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attractor: {fileID: 0}
-  body: {fileID: 4797960975346714771}
-  enableAttraction: 1
-  gravity: -10
 --- !u!65 &223678049431871650
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -95,6 +63,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   growthValue: 0.04
   kgPoints: 28.7
+--- !u!114 &-5058912969427607108
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8977407399122305289}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bde7d91ae16bfc4298218dfa9a11f4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  velocity: 0.1
+--- !u!54 &-4199573910116541493
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8977407399122305289}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &8612518464740224478
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -149,6 +146,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 5b64dc23dbc562e46bbf156d5b6fa410, type: 3}
       propertyPath: m_Name
       value: Anvil_MOD
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 5b64dc23dbc562e46bbf156d5b6fa410, type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5b64dc23dbc562e46bbf156d5b6fa410, type: 3}
