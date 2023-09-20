@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7829856209543392898}
   - component: {fileID: -4178962485787198507}
   - component: {fileID: 4564454279854778210}
+  - component: {fileID: -5729780320900670108}
   m_Layer: 2
   m_Name: Antenna
   m_TagString: Object
@@ -63,6 +64,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   velocity: 0.1
   markerPrefab: {fileID: 8373936594828344591, guid: 66fa1a4e0507bab498e82ab0011417aa, type: 3}
+  objectBody: {fileID: -5729780320900670108}
+  rigid: {fileID: 4564454279854778210}
+  model: {fileID: 4860463490013932684}
 --- !u!54 &4564454279854778210
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -78,7 +82,24 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
+--- !u!114 &-5729780320900670108
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3245802918492426589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84b51fd18215b0140b1e662dc84ce854, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attractor: {fileID: 0}
+  body: {fileID: -6281583979263807104, guid: f2a4bf8b244397a4cafc226457ea8bea, type: 3}
+  enableAttraction: 0
+  gravity: -10
+  freezeRotation: 1
 --- !u!1001 &5742859299840070109
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -96,7 +117,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c4f4f751aaba25843a39b4311a3c94e8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c4f4f751aaba25843a39b4311a3c94e8, type: 3}
       propertyPath: m_LocalPosition.y
@@ -112,7 +133,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c4f4f751aaba25843a39b4311a3c94e8, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c4f4f751aaba25843a39b4311a3c94e8, type: 3}
       propertyPath: m_LocalRotation.y
@@ -225,6 +246,11 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -7387706064836869012, guid: c4f4f751aaba25843a39b4311a3c94e8, type: 3}
+--- !u!1 &4860463490013932684 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: c4f4f751aaba25843a39b4311a3c94e8, type: 3}
+  m_PrefabInstance: {fileID: 5742859299840070109}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &4900214087612511655 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -8380157826906577798, guid: c4f4f751aaba25843a39b4311a3c94e8, type: 3}

@@ -20,7 +20,6 @@ public class InputManager : MonoBehaviour
     private void Awake()
     {
         controls = new PlayerControls();
-
     }
 
     private void Start()

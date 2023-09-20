@@ -10,24 +10,23 @@ public class FallingObject : MonoBehaviour
 
     RaycastHit raycastHit;
     RaycastHit hit;
-    bool planetDetected;
+    bool planetDetected = false;
 
     public GameObject markerPrefab;
 
     GameObject markerInGame;
     bool detected;
+
+    public GravityBody objectBody;
+    [SerializeField] Rigidbody rigid;
+    [SerializeField] GameObject model;
     public void Update()
     {
         if (!planetDetected)
         {
-            transform.position = Vector3.MoveTowards(transform.position, Vector3.zero, velocity);
-            Vector3 dir = Vector3.zero - transform.position;
-            if (Physics.Raycast(transform.position, dir, out raycastHit, 2f))
-            {
-                GetComponent<Rigidbody>().useGravity = true;
-                Destroy(markerInGame);
-                planetDetected = true;
-            }
+            model.transform.Rotate(2, 2, 2, Space.Self);
+            //Debug.Log("Detected");
+            //rigid.AddForce(-transform.position, ForceMode.Force);
         }
 
         if (!detected)
@@ -43,10 +42,23 @@ public class FallingObject : MonoBehaviour
 
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.CompareTag("Planet"))
+        {
+            Test();
+        }
+    }
+
+    public void Test()
+    {
+        Destroy(markerInGame);
+        planetDetected = true;
+    }
     private void Start()
     {
         GetComponent<Rigidbody>().useGravity = false;
-
+        objectBody.EnableAttraction();
     }
     public void Init(PoolManager _poolManager)
     {

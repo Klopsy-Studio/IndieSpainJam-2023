@@ -28,9 +28,11 @@ public class PoolManager : MonoBehaviour
         {
             int a = Random.Range(0, objPrefabs.Length);
             GameObject newObj = Instantiate(objPrefabs[a], transform);
+            
             //newObj.GetComponent<GravityBody>().attractor = GameManager.instance.planetAttractor;
             if(newObj.TryGetComponent(out FallingObject fallingObject))
             {
+                fallingObject.objectBody.attractor = GameManager.instance.planetAttractor;
                 fallingObject.Init(this);
             }
             objPool.Enqueue(newObj);
@@ -51,7 +53,7 @@ public class PoolManager : MonoBehaviour
     public void RandomSpawns()
     {
         //Vector3 newRandomPos = transform.position + new Vector3 (Random.Range(-xOffset, xOffset), Random.Range(-yOffset, yOffset), Random.Range(-zOffset, zOffset));
-        Vector3 newRandomSurfaceSpherePos = Random.onUnitSphere * 10f;
+        Vector3 newRandomSurfaceSpherePos = Random.onUnitSphere * 100f;
         GetObjFromPool(newRandomSurfaceSpherePos, Quaternion.identity); 
     }
 

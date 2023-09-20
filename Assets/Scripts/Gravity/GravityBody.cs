@@ -14,17 +14,19 @@ public class GravityBody : MonoBehaviour
     public bool freezeRotation = false;
     void Start()
     {
+        
         body = GetComponent<Rigidbody>();
 
-        if (freezeRotation)
+        
+        if (freezeRotation && enableAttraction)
         {
             body.constraints = RigidbodyConstraints.FreezeRotation;
         }
 
         body.useGravity = false;
+
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
         if (enableAttraction)
@@ -33,9 +35,16 @@ public class GravityBody : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    public void EnableAttraction()
     {
-        
+        enableAttraction = true;
+
+        body.useGravity = false;
+
+        if (enableAttraction)
+        {
+            body.constraints = RigidbodyConstraints.FreezePosition;
+        }
     }
 }
 

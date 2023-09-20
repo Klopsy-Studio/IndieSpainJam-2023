@@ -9,10 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6057602983178338382}
-  - component: {fileID: 1776693591129225266}
   - component: {fileID: 2734194822300017159}
   - component: {fileID: -7919030006476572826}
   - component: {fileID: 8125671378582900472}
+  - component: {fileID: -4566576107945196744}
   m_Layer: 2
   m_Name: Sofa
   m_TagString: Object
@@ -36,19 +36,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &1776693591129225266
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8692871621673850211}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 2.4493418, y: 1.0936661, z: 1.0591545}
-  m_Center: {x: 0, y: -0.0024642944, z: 0.3648014}
 --- !u!114 &2734194822300017159
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -77,6 +64,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   velocity: 0.1
   markerPrefab: {fileID: 8373936594828344591, guid: 66fa1a4e0507bab498e82ab0011417aa, type: 3}
+  objectBody: {fileID: -4566576107945196744}
+  rigid: {fileID: 8125671378582900472}
+  model: {fileID: 2460592762222429532}
 --- !u!54 &8125671378582900472
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -92,7 +82,24 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
+--- !u!114 &-4566576107945196744
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8692871621673850211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84b51fd18215b0140b1e662dc84ce854, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attractor: {fileID: 0}
+  body: {fileID: -6281583979263807104, guid: f2a4bf8b244397a4cafc226457ea8bea, type: 3}
+  enableAttraction: 0
+  gravity: -10
+  freezeRotation: 1
 --- !u!1001 &3379003490015082509
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -154,6 +161,25 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 794166de86a4a0c439f9b62c6d6679f5, type: 3}
+--- !u!1 &2460592762222429532 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 794166de86a4a0c439f9b62c6d6679f5, type: 3}
+  m_PrefabInstance: {fileID: 3379003490015082509}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &6409986993004734164
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2460592762222429532}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -5495902117074765545, guid: 794166de86a4a0c439f9b62c6d6679f5, type: 3}
 --- !u!4 &2985350781606698982 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 794166de86a4a0c439f9b62c6d6679f5, type: 3}
