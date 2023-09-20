@@ -15,29 +15,30 @@ public class DetectFallingPlace : MonoBehaviour
 
     private void Start()
     {
-        
+       
     }
 
     public void Update()
     {
-        //if (!detected)
-        //{
-        //    if (Physics.Raycast(transform.position, -transform.up * 1000f, out hit))
-        //    {
-        //        Instantiate(marker, hit.point, Quaternion.identity);
-        //        detected = true;
-        //    }
-        //}
+        if (!detected)
+        {
+            if (Physics.Raycast(transform.position, -transform.position * 1000f, out hit))
+            {
+                marker = Instantiate(marker, hit.point, Quaternion.identity);
+                detected = true;
+            }
+        }
     }
 
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.collider.CompareTag("Planet"))
+        if (collision.collider.CompareTag("Marker"))
         {
             GravityBody body = Instantiate(objectPool[Random.Range(0, objectPool.Count)], transform.position, Quaternion.identity).GetComponent<GravityBody>();
             body.transform.parent = null;
             body.attractor = GameManager.instance.planetAttractor;
+            Destroy(marker);
             Destroy(gameObject);
         }
     }

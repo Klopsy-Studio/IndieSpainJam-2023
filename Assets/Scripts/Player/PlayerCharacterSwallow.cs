@@ -7,9 +7,9 @@ public class PlayerCharacterSwallow : MonoBehaviour
     [HideInInspector] public PlayerCharacter parent;
     [SerializeField] Collider swallowArea;
 
-    bool canSwallow;
+    [HideInInspector] public bool canSwallow;
 
-    [SerializeField] List<GravityBody> objectsAttracted = new List<GravityBody>();
+    [SerializeField] public List<GravityBody> objectsAttracted = new List<GravityBody>();
     public void EndSwallow()
     {
         swallowArea.enabled = false;
@@ -32,13 +32,34 @@ public class PlayerCharacterSwallow : MonoBehaviour
     }
 
 
-    private void OnTriggerEnter(Collider other)
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    if (canSwallow)
+    //    {
+    //        if (other.CompareTag("Object"))
+    //        {
+    //            if(other.TryGetComponent<GravityBody>(out GravityBody newObject))
+    //            {
+    //                if (!objectsAttracted.Contains(newObject))
+    //                {
+    //                    objectsAttracted.Add(newObject);
+    //                    newObject.attractor = parent._playerCharacterAttractor;
+    //                }
+
+    //            }
+
+    //        } 
+    //    }
+    //}
+
+
+    private void OnTriggerStay(Collider other)
     {
         if (canSwallow)
         {
             if (other.CompareTag("Object"))
             {
-                if(other.TryGetComponent<GravityBody>(out GravityBody newObject))
+                if (other.TryGetComponent<GravityBody>(out GravityBody newObject))
                 {
                     if (!objectsAttracted.Contains(newObject))
                     {
@@ -48,27 +69,6 @@ public class PlayerCharacterSwallow : MonoBehaviour
 
                 }
 
-            } 
-        }
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (canSwallow)
-        {
-            if (collision.collider.CompareTag("Object"))
-            {
-                if (collision.collider.TryGetComponent<GravityBody>(out GravityBody newObject))
-                {
-                    if (objectsAttracted.Contains(newObject))
-                    {
-                        objectsAttracted.Remove(newObject);
-                        ObjectsValue value = newObject.GetComponent<ObjectsValue>();
-                        parent._playerCharacterGrow.Grow(value.ReturnObjectValues().x);
-                        GameManager.instance.UpdatePoints(value.ReturnObjectValues().y);
-                        Destroy(newObject.gameObject);
-                    }
-                }
             }
         }
     }
