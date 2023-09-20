@@ -9,7 +9,8 @@ public class PlayerCharacter : MonoBehaviour
     [HideInInspector] public PlayerCharacterMovement _playerCharacterMovement;
     [HideInInspector] public PlayerCharacterSwallow _playerCharacterSwallow;
     [HideInInspector] public GravityAttractor _playerCharacterAttractor;
-
+    [HideInInspector] public PlayerCharacterGrow _playerCharacterGrow;
+ 
     [Header("Player Events")]
     [SerializeField] UnityEvent changeToMove;
     [SerializeField] UnityEvent exitMove;
@@ -92,6 +93,8 @@ public class PlayerCharacter : MonoBehaviour
         _playerCharacterSwallow = GetComponent<PlayerCharacterSwallow>();
         _playerCharacterSwallow.parent = this;
 
+        _playerCharacterGrow = GetComponent<PlayerCharacterGrow>();
+        _playerCharacterGrow.parent = this;
     }
 
 

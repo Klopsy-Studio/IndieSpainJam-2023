@@ -16,13 +16,18 @@ public class PoolManager : MonoBehaviour
     [SerializeField] float zOffset = 1f;
 
     float spawnRatio;
+
+    [Space]
+    [Header("Spawn Ratios")]
     [SerializeField] float maxSpawnRatio = 5f;
+    [SerializeField] float minSpawnRation = 0f;
     private void Start()
     {
-        spawnRatio = maxSpawnRatio;
+        spawnRatio = Random.Range(minSpawnRation, maxSpawnRatio);
         for (int i = 0; i < poolSize; i++)
         {
             GameObject newObj = Instantiate(objPrefab, transform);
+            newObj.GetComponent<GravityBody>().attractor = GameManager.instance.planetAttractor;
             if(newObj.TryGetComponent(out FallingObject fallingObject))
             {
                 fallingObject.Init(this);
@@ -38,9 +43,9 @@ public class PoolManager : MonoBehaviour
         if (spawnRatio <= 0)
         {
             RandomSpawns();
-            spawnRatio = maxSpawnRatio;
+            spawnRatio = Random.Range(minSpawnRation, maxSpawnRatio);
         }
-       
+
     }
     public void RandomSpawns()
     {
