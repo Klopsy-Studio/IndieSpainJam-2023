@@ -76,6 +76,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocity: 0.1
+  markerPrefab: {fileID: 8373936594828344591, guid: 66fa1a4e0507bab498e82ab0011417aa, type: 3}
 --- !u!54 &8125671378582900472
 Rigidbody:
   m_ObjectHideFlags: 0

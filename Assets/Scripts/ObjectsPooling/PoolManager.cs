@@ -28,7 +28,7 @@ public class PoolManager : MonoBehaviour
         {
             int a = Random.Range(0, objPrefabs.Length);
             GameObject newObj = Instantiate(objPrefabs[a], transform);
-            newObj.GetComponent<GravityBody>().attractor = GameManager.instance.planetAttractor;
+            //newObj.GetComponent<GravityBody>().attractor = GameManager.instance.planetAttractor;
             if(newObj.TryGetComponent(out FallingObject fallingObject))
             {
                 fallingObject.Init(this);

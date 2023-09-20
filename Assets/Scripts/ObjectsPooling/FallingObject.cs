@@ -9,10 +9,13 @@ public class FallingObject : MonoBehaviour
     [SerializeField] float velocity = 2f;
 
     RaycastHit raycastHit;
-
+    RaycastHit hit;
     bool planetDetected;
 
-    public GameObject marker;
+    public GameObject markerPrefab;
+
+    GameObject markerInGame;
+    bool detected;
     public void Update()
     {
         if (!planetDetected)
@@ -22,11 +25,21 @@ public class FallingObject : MonoBehaviour
             if (Physics.Raycast(transform.position, dir, out raycastHit, 2f))
             {
                 GetComponent<Rigidbody>().useGravity = true;
-                Destroy(marker);
+                Destroy(markerInGame);
                 planetDetected = true;
             }
         }
-        
+
+        if (!detected)
+        {
+            if (Physics.Raycast(transform.position, -transform.position * 1000f, out hit))
+            {
+                markerInGame = Instantiate(markerPrefab, hit.point, Quaternion.identity);
+                GetComponent<Rigidbody>().AddTorque(new Vector3(150, 150, 150), ForceMode.Force);
+
+                detected = true;
+            }
+        }
 
     }
 
