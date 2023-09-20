@@ -134,7 +134,11 @@ MonoBehaviour:
   marker: {fileID: 8373936594828344591, guid: 66fa1a4e0507bab498e82ab0011417aa, type: 3}
   objectPool:
   - {fileID: 1617041597083476572, guid: f2a4bf8b244397a4cafc226457ea8bea, type: 3}
-  - {fileID: 8756184082278958174, guid: 7fb16c16bec9b4d4fa0e034d1c2b22b4, type: 3}
+  - {fileID: 3245802918492426589, guid: 9e98f9fa561d9fb4f88f80e6676e7dcc, type: 3}
+  - {fileID: 8977407399122305289, guid: d00fe984b77e58e43867531034bc1bc8, type: 3}
+  - {fileID: 6076674473648081343, guid: 474a0515de72fcd43bdc5d3936a80471, type: 3}
+  - {fileID: 8692871621673850211, guid: 5f47bab2d3dc2af40ba03e360e4f85ea, type: 3}
+  - {fileID: 6216773798280003571, guid: c7d8f452dadd02a4eb39504e26445dfc, type: 3}
 --- !u!65 &540928831850320824
 BoxCollider:
   m_ObjectHideFlags: 0

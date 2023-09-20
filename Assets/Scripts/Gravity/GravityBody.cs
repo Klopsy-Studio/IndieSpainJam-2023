@@ -10,10 +10,17 @@ public class GravityBody : MonoBehaviour
     public bool enableAttraction = true;
 
     public float gravity;
+
+    public bool freezeRotation = false;
     void Start()
     {
         body = GetComponent<Rigidbody>();
-        body.constraints = RigidbodyConstraints.FreezeRotation;
+
+        if (freezeRotation)
+        {
+            body.constraints = RigidbodyConstraints.FreezeRotation;
+        }
+
         body.useGravity = false;
     }
 
@@ -26,7 +33,10 @@ public class GravityBody : MonoBehaviour
         }
     }
 
-
+    private void OnCollisionEnter(Collision collision)
+    {
+        
+    }
 }
 
 
