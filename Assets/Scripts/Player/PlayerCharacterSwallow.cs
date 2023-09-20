@@ -63,7 +63,9 @@ public class PlayerCharacterSwallow : MonoBehaviour
                     if (objectsAttracted.Contains(newObject))
                     {
                         objectsAttracted.Remove(newObject);
-                        parent._playerCharacterGrow.Grow(newObject.GetComponent<ObjectsValue>().ReturnObjectValues().x);
+                        ObjectsValue value = newObject.GetComponent<ObjectsValue>();
+                        parent._playerCharacterGrow.Grow(value.ReturnObjectValues().x);
+                        GameManager.instance.UpdatePoints(value.ReturnObjectValues().y);
                         Destroy(newObject.gameObject);
                     }
                 }
