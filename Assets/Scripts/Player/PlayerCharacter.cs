@@ -26,6 +26,7 @@ public class PlayerCharacter : MonoBehaviour
     float _swallowTimer;
     bool swallowing;
     bool swallowInCooldown = false;
+    public bool swallowInput = false;
 
     //private Vector3 moveDirection;
     //private Rigidbody bodyRigid;
@@ -100,9 +101,7 @@ public class PlayerCharacter : MonoBehaviour
 
     void Update()
     {
-        //moveDirection = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")).normalized;
-
-        if (!swallowInCooldown && Input.GetKey(KeyCode.Mouse0))
+        if (!swallowInCooldown && swallowInput)
         {
             if (!swallowing)
             {
@@ -116,7 +115,7 @@ public class PlayerCharacter : MonoBehaviour
             }
         }
 
-        if (swallowing && Input.GetKeyUp(KeyCode.Mouse0))
+        if (swallowing && !swallowInput)
         {
             swallowing = false;
             ResetSwallowTimerValue();
@@ -167,10 +166,6 @@ public class PlayerCharacter : MonoBehaviour
     public void ResetSwallowTimerValue()
     {
         _swallowTimer = swallowTimer;
-    }
-    private void FixedUpdate()
-    {
-        //bodyRigid.MovePosition(bodyRigid.position + transform.TransformDirection(moveDirection * currentMoveSpeed * Time.deltaTime));
     }
 
 

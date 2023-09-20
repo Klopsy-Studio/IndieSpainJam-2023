@@ -7,16 +7,16 @@ public class PlayerCharacterMovement : MonoBehaviour
     [Header("References")]
     [SerializeField] private PlayerCharacter playerCharacter;
     [SerializeField] private Rigidbody rigidbodyCmp;
+    [SerializeField] private GameObject model;
 
     [Header("Parameters")]
+    public Vector3 moveDirection;
     [SerializeField] float moveSpeed;
     [SerializeField] float swallowMoveSpeed;
     private float currentMoveSpeed;
-    private Vector3 moveDirection;
-
-    public GameObject model;
 
     [SerializeField] float rotationSpeed;
+
 
     private void Start()
     {
@@ -26,8 +26,8 @@ public class PlayerCharacterMovement : MonoBehaviour
 
     private void Update()
     {
-        if (playerCharacter.CurrentPlayerState == PlayerStates.Move || playerCharacter.CurrentPlayerState == PlayerStates.Swallow)
-            moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")).normalized;
+        //if (playerCharacter.CurrentPlayerState == PlayerStates.Move || playerCharacter.CurrentPlayerState == PlayerStates.Swallow)
+        //    moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")).normalized;
     }
 
 
@@ -37,28 +37,9 @@ public class PlayerCharacterMovement : MonoBehaviour
 
         if (moveDirection.magnitude > 0)
             model.transform.localRotation = Quaternion.LookRotation(moveDirection.normalized*rotationSpeed, Vector3.up);
-
-        //model.transform.rotation = Quaternion.LookRotation(moveDirection, transform.up);
     }
 
-    public void HandleRotation()
-    {
-
-
-        //if (moveDirection.z == 1)
-        //{
-        //    Mathf.Lerp(transform.rotation.y, 90, Time.deltaTime * 5);
-        //}
-
-        //if (moveDirection.z == -1)
-        //{
-        //    Mathf.Lerp(transform.rotation.y, -90, Time.deltaTime * 5);
-        //}
-    }
 
     public void ChangeToMoveSpeed() { currentMoveSpeed = moveSpeed; }
     public void ChangeToSwallowSpeed() { currentMoveSpeed = swallowMoveSpeed; }
-
-
-
 }
