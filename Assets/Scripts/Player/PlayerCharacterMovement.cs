@@ -26,7 +26,8 @@ public class PlayerCharacterMovement : MonoBehaviour
 
     private void Update()
     {
-        moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")).normalized;
+        if (playerCharacter.CurrentPlayerState == PlayerStates.Move || playerCharacter.CurrentPlayerState == PlayerStates.Swallow)
+            moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")).normalized;
     }
 
 
