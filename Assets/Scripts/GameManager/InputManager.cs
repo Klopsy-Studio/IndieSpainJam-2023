@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class InputManager : MonoBehaviour
 {
@@ -41,12 +42,14 @@ public class InputManager : MonoBehaviour
 
     void MovementInput()
     {
-        playerCharacter._playerCharacterMovement.moveDirection = new Vector3(axisVector.x, 0, axisVector.y);
+        if (playerCharacter.CurrentPlayerState != PlayerStates.Death)
+            playerCharacter._playerCharacterMovement.moveDirection = new Vector3(axisVector.x, 0, axisVector.y);
     }
 
     void OnSwallowInput()
     {
-        playerCharacter.swallowInput = swallowInputValue;
+        if (playerCharacter.CurrentPlayerState != PlayerStates.Death)
+            playerCharacter.swallowInput = swallowInputValue;
     }
 
     void OnPauseInput(InputAction.CallbackContext context)
@@ -54,5 +57,9 @@ public class InputManager : MonoBehaviour
         // Calls 1 time when Pause input is pressed
     }
 
+
+
+
+    
 
 }
