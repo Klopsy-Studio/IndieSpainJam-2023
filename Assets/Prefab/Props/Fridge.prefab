@@ -180,7 +180,7 @@ GameObject:
   - component: {fileID: 4567969337617401831}
   - component: {fileID: 8326268692449930619}
   m_Layer: 0
-  m_Name: Frigorifico
+  m_Name: Fridge
   m_TagString: Object
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
