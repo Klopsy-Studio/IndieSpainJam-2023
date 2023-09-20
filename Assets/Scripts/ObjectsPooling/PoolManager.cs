@@ -6,7 +6,7 @@ using UnityEngine;
 public class PoolManager : MonoBehaviour
 {
 
-    public GameObject objPrefab;
+    public GameObject[] objPrefabs;
     public int poolSize;
     private Queue<GameObject> objPool = new Queue<GameObject>();
 
@@ -26,7 +26,8 @@ public class PoolManager : MonoBehaviour
         spawnRatio = Random.Range(minSpawnRation, maxSpawnRatio);
         for (int i = 0; i < poolSize; i++)
         {
-            GameObject newObj = Instantiate(objPrefab, transform);
+            int a = Random.Range(0, objPrefabs.Length);
+            GameObject newObj = Instantiate(objPrefabs[a], transform);
             newObj.GetComponent<GravityBody>().attractor = GameManager.instance.planetAttractor;
             if(newObj.TryGetComponent(out FallingObject fallingObject))
             {
@@ -49,8 +50,9 @@ public class PoolManager : MonoBehaviour
     }
     public void RandomSpawns()
     {
-        Vector3 newRandomPos = transform.position + new Vector3 (Random.Range(-xOffset, xOffset), Random.Range(-yOffset, yOffset), Random.Range(-zOffset, zOffset));
-        GetObjFromPool(newRandomPos, Quaternion.identity); 
+        //Vector3 newRandomPos = transform.position + new Vector3 (Random.Range(-xOffset, xOffset), Random.Range(-yOffset, yOffset), Random.Range(-zOffset, zOffset));
+        Vector3 newRandomSurfaceSpherePos = Random.onUnitSphere * 10f;
+        GetObjFromPool(newRandomSurfaceSpherePos, Quaternion.identity); 
     }
 
     public GameObject GetObjFromPool(Vector3 newPos, Quaternion newRotation)
