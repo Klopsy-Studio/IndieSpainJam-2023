@@ -8,6 +8,8 @@ public class GravityBody : MonoBehaviour
 
     public Rigidbody body;
     public bool enableAttraction = true;
+
+    public float gravity;
     void Start()
     {
         body = GetComponent<Rigidbody>();
@@ -20,7 +22,7 @@ public class GravityBody : MonoBehaviour
     {
         if (enableAttraction)
         {
-            attractor.Attract(transform, body);
+            attractor.Attract(transform, body, gravity);
         }
     }
 

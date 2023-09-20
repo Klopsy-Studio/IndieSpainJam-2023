@@ -219,6 +219,7 @@ MonoBehaviour:
   attractor: {fileID: 0}
   body: {fileID: 1402426222908549173}
   enableAttraction: 1
+  gravity: -10
 --- !u!54 &1402426222908549173
 Rigidbody:
   m_ObjectHideFlags: 0
