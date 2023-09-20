@@ -1,9 +1,14 @@
 fileFormatVersion: 2
-guid: 9489ce09309a60c46a730a569e0cdafa
+guid: 4d9a6eb4679822843a88994ca16d06c6
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Piano
+    second: {fileID: 2100000, guid: b772d479f9a21d946a5d2fb84a5b58c3, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

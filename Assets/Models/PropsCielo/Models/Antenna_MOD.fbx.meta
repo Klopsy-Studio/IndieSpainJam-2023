@@ -1,9 +1,14 @@
 fileFormatVersion: 2
-guid: 5d53e49ad6304e8419aebf0af130c408
+guid: c4f4f751aaba25843a39b4311a3c94e8
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Antena
+    second: {fileID: 2100000, guid: e3a7734a33a3755418190486b35f0c22, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
