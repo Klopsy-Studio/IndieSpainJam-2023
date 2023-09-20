@@ -9,7 +9,7 @@ public class PlayerCharacterSwallow : MonoBehaviour
 
     bool canSwallow;
 
-    [SerializeField] List<ObjectFall> objectsAttracted = new List<ObjectFall>();
+    [SerializeField] List<GravityBody> objectsAttracted = new List<GravityBody>();
     public void EndSwallow()
     {
         swallowArea.enabled = false;
@@ -17,9 +17,9 @@ public class PlayerCharacterSwallow : MonoBehaviour
 
         if(objectsAttracted.Count > 0)
         {
-            foreach(ObjectFall o in objectsAttracted)
+            foreach(GravityBody o in objectsAttracted)
             {
-                o.objectGravityBody.attractor = GameManager.instance.planetAttractor;
+                o.attractor = GameManager.instance.planetAttractor;
             }
 
             objectsAttracted.Clear();
@@ -38,18 +38,14 @@ public class PlayerCharacterSwallow : MonoBehaviour
         {
             if (other.CompareTag("Object"))
             {
-                if(other.TryGetComponent<ObjectFall>(out ObjectFall newObject))
+                if(other.TryGetComponent<GravityBody>(out GravityBody newObject))
                 {
-                    if (!newObject.falling)
+                    if (!objectsAttracted.Contains(newObject))
                     {
-                        if (!objectsAttracted.Contains(newObject))
-                        {
-                            objectsAttracted.Add(newObject);
-                            newObject.objectGravityBody.attractor = parent._playerCharacterAttractor;
-                        }
-
+                        objectsAttracted.Add(newObject);
+                        newObject.attractor = parent._playerCharacterAttractor;
                     }
-                   
+
                 }
 
             } 
@@ -62,15 +58,13 @@ public class PlayerCharacterSwallow : MonoBehaviour
         {
             if (collision.collider.CompareTag("Object"))
             {
-                if (collision.collider.TryGetComponent<ObjectFall>(out ObjectFall newObject))
+                if (collision.collider.TryGetComponent<GravityBody>(out GravityBody newObject))
                 {
-                    if (!newObject.falling)
+                    if (objectsAttracted.Contains(newObject))
                     {
-                        if (objectsAttracted.Contains(newObject))
-                        {
-                            objectsAttracted.Remove(newObject);
-                            Destroy(newObject.gameObject);
-                        }
+                        objectsAttracted.Remove(newObject);
+                        parent._playerCharacterGrow.Grow(newObject.GetComponent<ObjectsValue>().ReturnObjectValues().x);
+                        Destroy(newObject.gameObject);
                     }
                 }
             }
