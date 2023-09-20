@@ -45,7 +45,7 @@ public class GameManager : MonoBehaviour
     #endregion
 
     #region Days
-    private float _day;
+    private float _day = 1;
 
     public float Day
     {
