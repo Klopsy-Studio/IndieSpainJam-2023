@@ -68,6 +68,7 @@ MonoBehaviour:
   rigid: {fileID: -4199573910116541493}
   model: {fileID: 8882407125676478607}
   markerPrefab: {fileID: 8373936594828344591, guid: 66fa1a4e0507bab498e82ab0011417aa, type: 3}
+  markerInGame: {fileID: 0}
   objectBody: {fileID: -5190814765931981717}
   explosionVFX: {fileID: 4284139513268224078}
   hitVFX: {fileID: 79298897626615306}

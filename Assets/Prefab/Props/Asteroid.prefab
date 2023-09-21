@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 7438676823073869876}
   m_Layer: 0
   m_Name: Asteroid
-  m_TagString: Untagged
+  m_TagString: Object
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -68,6 +68,7 @@ MonoBehaviour:
   rigid: {fileID: 1896935362519321258}
   model: {fileID: 8611841453343435166}
   markerPrefab: {fileID: 8373936594828344591, guid: 66fa1a4e0507bab498e82ab0011417aa, type: 3}
+  markerInGame: {fileID: 0}
   objectBody: {fileID: 1290262350891533097}
   explosionVFX: {fileID: 7881543641917377236}
   hitVFX: {fileID: 13936647662697184}
@@ -321,6 +322,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: a5f02497e08767042aa6351d335f02db, type: 3}
       propertyPath: m_Name
       value: Asteroid_MOD
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a5f02497e08767042aa6351d335f02db, type: 3}
+      propertyPath: m_TagString
+      value: Object
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a5f02497e08767042aa6351d335f02db, type: 3}

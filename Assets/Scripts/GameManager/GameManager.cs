@@ -105,6 +105,7 @@ public class GameManager : MonoBehaviour
                 ResetTimer();
                 AddAnotherDay();
                 ReturnAllItems();
+                ResetWeight();
 
                 foreach (PoolManager pool in pools)
                 {
@@ -166,6 +167,12 @@ public class GameManager : MonoBehaviour
     {
         _timer = Timer;
         timerImage.fillAmount = 1f;
+    }
+
+    public void ResetWeight()
+    {
+        playerCharacter.transform.localScale = new Vector3(1, 1, 1);
+        Points = 0;       
     }
 
 
