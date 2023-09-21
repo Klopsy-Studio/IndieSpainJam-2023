@@ -32,25 +32,25 @@ public class PlayerCharacterSwallow : MonoBehaviour
     }
 
 
-    //private void OnTriggerEnter(Collider other)
-    //{
-    //    if (canSwallow)
-    //    {
-    //        if (other.CompareTag("Object"))
-    //        {
-    //            if(other.TryGetComponent<GravityBody>(out GravityBody newObject))
-    //            {
-    //                if (!objectsAttracted.Contains(newObject))
-    //                {
-    //                    objectsAttracted.Add(newObject);
-    //                    newObject.attractor = parent._playerCharacterAttractor;
-    //                }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (canSwallow)
+        {
+            if (other.CompareTag("Object"))
+            {
+                if (other.TryGetComponent<GravityBody>(out GravityBody newObject))
+                {
+                    if (!objectsAttracted.Contains(newObject))
+                    {
+                        objectsAttracted.Add(newObject);
+                        newObject.attractor = parent._playerCharacterAttractor;
+                    }
 
-    //            }
+                }
 
-    //        } 
-    //    }
-    //}
+            }
+        }
+    }
 
 
     private void OnTriggerStay(Collider other)

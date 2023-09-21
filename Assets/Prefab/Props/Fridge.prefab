@@ -227,6 +227,7 @@ GameObject:
   - component: {fileID: -8445006940814870000}
   - component: {fileID: -6281583979263807104}
   - component: {fileID: -6172427829011837236}
+  - component: {fileID: 6996840205381270419}
   m_Layer: 2
   m_Name: Fridge
   m_TagString: Object
@@ -314,6 +315,19 @@ MonoBehaviour:
   enableAttraction: 0
   gravity: -10
   freezeRotation: 1
+--- !u!65 &6996840205381270419
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1617041597083476572}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1.9638681, z: 1}
+  m_Center: {x: 0, y: 0.011444896, z: 0}
 --- !u!1 &2002651637528721334
 GameObject:
   m_ObjectHideFlags: 0
