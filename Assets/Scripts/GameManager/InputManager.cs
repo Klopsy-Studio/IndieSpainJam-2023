@@ -53,12 +53,9 @@ public class InputManager : MonoBehaviour
 
     void OnPauseInput(InputAction.CallbackContext context)
     {
-        // Calls 1 time when Pause input is pressed
+        if (playerCharacter.CurrentPlayerState != PlayerStates.Death)
+        {
+            UIGameplay.instance.OnPauseResumeGame();
+        }
     }
-
-
-
-
-    
-
 }
