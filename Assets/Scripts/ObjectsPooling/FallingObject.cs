@@ -29,6 +29,7 @@ public class FallingObject : MonoBehaviour
 
     [HideInInspector] public bool falling;
 
+    public Collider floorCollider;
     public void Update()
     {
         if (!planetDetected)
@@ -67,6 +68,7 @@ public class FallingObject : MonoBehaviour
 
             PlayHitVFX();
             falling = false;
+            floorCollider.enabled = false;
         }
     }
 

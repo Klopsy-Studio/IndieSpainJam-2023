@@ -76,6 +76,7 @@ MonoBehaviour:
   velocity: 0.1
   maxRotationForce: 2
   falling: 0
+  floorCollider: {fileID: 6000198190566035280}
 --- !u!54 &-6281583979263807104
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -319,6 +320,19 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: c74055342314d4a4ba1a4a45e7754567, type: 3}
   m_PrefabInstance: {fileID: 3324216188263806451}
   m_PrefabAsset: {fileID: 0}
+--- !u!65 &6000198190566035280
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2513172226671118498}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 2.0354853, z: 1}
+  m_Center: {x: 0, y: 0.037543952, z: 0}
 --- !u!4 &3002568891989512728 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: c74055342314d4a4ba1a4a45e7754567, type: 3}

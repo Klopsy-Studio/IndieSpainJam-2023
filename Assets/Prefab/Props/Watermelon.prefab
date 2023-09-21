@@ -76,6 +76,7 @@ MonoBehaviour:
   velocity: 0.1
   maxRotationForce: 2
   falling: 0
+  floorCollider: {fileID: 893499599206403889}
 --- !u!54 &-9203161031121952194
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -292,6 +293,19 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: fb9a12c6dfaba91409ff3fa3b0be01f8, type: 3}
   m_PrefabInstance: {fileID: 2426642063429766315}
   m_PrefabAsset: {fileID: 0}
+--- !u!65 &893499599206403889
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3273065557339779578}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.8617308, y: 0.5433079, z: 0.5433077}
+  m_Center: {x: 0, y: -0.000000074505806, z: 0.00000008940697}
 --- !u!65 &1109331112407376234
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -303,8 +317,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.86661315, y: 0.48404884, z: 0.5254059}
-  m_Center: {x: 0.0010742578, y: 0.031962395, z: -0.007598877}
+  m_Size: {x: 0.86661315, y: 0.54257053, z: 0.5463065}
+  m_Center: {x: 0.0010742578, y: 0.0027015507, z: 0.0028514266}
 --- !u!1001 &2630032673123599589
 PrefabInstance:
   m_ObjectHideFlags: 0

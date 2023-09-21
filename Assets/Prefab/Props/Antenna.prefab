@@ -76,6 +76,7 @@ MonoBehaviour:
   velocity: 0.1
   maxRotationForce: 2
   falling: 0
+  floorCollider: {fileID: 4262652531820666029}
 --- !u!54 &4564454279854778210
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -386,6 +387,19 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 6981290006637109699, guid: c4f4f751aaba25843a39b4311a3c94e8, type: 3}
+--- !u!65 &4262652531820666029
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4860463490013932684}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 7.3054724, y: 6.457447, z: 7.3054724}
+  m_Center: {x: 0, y: 0.3165182, z: 0}
 --- !u!1 &4900214087612511655 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -8380157826906577798, guid: c4f4f751aaba25843a39b4311a3c94e8, type: 3}

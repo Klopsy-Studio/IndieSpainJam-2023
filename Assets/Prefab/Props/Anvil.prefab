@@ -76,6 +76,7 @@ MonoBehaviour:
   velocity: 0.1
   maxRotationForce: 2
   falling: 0
+  floorCollider: {fileID: 3765382042501340796}
 --- !u!54 &-4199573910116541493
 Rigidbody:
   m_ObjectHideFlags: 0
