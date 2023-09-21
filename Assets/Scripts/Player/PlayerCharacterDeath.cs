@@ -22,7 +22,6 @@ public class PlayerCharacterDeath : MonoBehaviour
     public void PlayerDie()
     {
         //Make PlayerDie
-
         //Update with animation and death screen
         SceneManager.LoadScene(GameManager.instance.gameScene);
     }

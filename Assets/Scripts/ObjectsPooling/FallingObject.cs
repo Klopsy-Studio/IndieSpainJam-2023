@@ -10,7 +10,7 @@ public class FallingObject : MonoBehaviour
     [SerializeField] Rigidbody rigid;
     [SerializeField] GameObject model;
     public GameObject markerPrefab;
-    GameObject markerInGame;
+    [HideInInspector] public GameObject markerInGame;
     public GravityBody objectBody;
     [SerializeField] private GameObject explosionVFX;
     [SerializeField] private GameObject hitVFX;

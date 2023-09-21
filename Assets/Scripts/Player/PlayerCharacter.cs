@@ -36,6 +36,8 @@ public class PlayerCharacter : MonoBehaviour
     #region PlayerStates
     private PlayerStates _currentPlayerState;
 
+    public Vector3 originalPosition;
+
     public PlayerStates CurrentPlayerState
     {
         get
@@ -100,6 +102,8 @@ public class PlayerCharacter : MonoBehaviour
 
         _playerCharacterDeath = GetComponent<PlayerCharacterDeath>();
         _playerCharacterDeath.parent = this;
+
+        originalPosition = transform.position;
     }
 
 

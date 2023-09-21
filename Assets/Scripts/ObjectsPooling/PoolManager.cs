@@ -21,6 +21,9 @@ public class PoolManager : MonoBehaviour
     [Header("Spawn Ratios")]
     [SerializeField] float maxSpawnRatio = 5f;
     [SerializeField] float minSpawnRation = 0f;
+
+
+    public bool enableSpawn;
     private void Start()
     {
         spawnRatio = Random.Range(minSpawnRation, maxSpawnRatio);
@@ -42,19 +45,21 @@ public class PoolManager : MonoBehaviour
 
     private void Update()
     {
-        spawnRatio -= Time.deltaTime;
-        if (spawnRatio <= 0)
+        if (enableSpawn)
         {
-            RandomSpawns();
-            spawnRatio = Random.Range(minSpawnRation, maxSpawnRatio);
+            spawnRatio -= Time.deltaTime;
+            if (spawnRatio <= 0)
+            {
+                RandomSpawns();
+                spawnRatio = Random.Range(minSpawnRation, maxSpawnRatio);
+            }
         }
-
     }
     public void RandomSpawns()
     {
         //Vector3 newRandomPos = transform.position + new Vector3 (Random.Range(-xOffset, xOffset), Random.Range(-yOffset, yOffset), Random.Range(-zOffset, zOffset));
         Vector3 newRandomSurfaceSpherePos = Random.onUnitSphere * 100f;
-        GetObjFromPool(newRandomSurfaceSpherePos, Quaternion.identity); 
+        GameManager.instance.AddObjectToList(GetObjFromPool(newRandomSurfaceSpherePos, Quaternion.identity).GetComponent<FallingObject>()); 
     }
 
     public GameObject GetObjFromPool(Vector3 newPos, Quaternion newRotation)

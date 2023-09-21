@@ -69,6 +69,11 @@ public class GameManager : MonoBehaviour
     #endregion
 
     public string gameScene;
+
+
+    public List<FallingObject> objectsInPlanet = new List<FallingObject>();
+    public List<PoolManager> pools = new List<PoolManager>();
+    public PlayerCharacter playerCharacter;
     
     private void Awake()
     {
@@ -79,6 +84,12 @@ public class GameManager : MonoBehaviour
     {
         ResetTimer();
         ResetTimerImage();
+        
+
+        foreach(PoolManager pool in pools)
+        {
+            pool.enableSpawn = true;
+        }
     }
     public void Update()
     {
@@ -93,10 +104,38 @@ public class GameManager : MonoBehaviour
                 dayFinished = true;
                 ResetTimer();
                 AddAnotherDay();
+                ReturnAllItems();
+
+                foreach (PoolManager pool in pools)
+                {
+                    pool.enableSpawn = false;
+                }
+
+                Invoke("BeginAnotherDay", 1f);
+
+      
             }
         }
     }
+    public void BeginAnotherDay()
+    {
+        dayFinished = false;
+        playerCharacter.transform.position = playerCharacter.originalPosition;
 
+        foreach (PoolManager pool in pools)
+        {
+            pool.enableSpawn = true;
+        }
+    }
+    public void AddObjectToList(FallingObject o)
+    {
+        objectsInPlanet.Add(o);
+    }
+
+    public void RemoveObjectFromList(FallingObject o)
+    {
+        objectsInPlanet.Remove(o);
+    }
 
     public void SetTimerFillAmmount()
     {
@@ -105,6 +144,20 @@ public class GameManager : MonoBehaviour
         timerImage.fillAmount = fraction;
     }
 
+    public void ReturnAllItems()
+    {
+        foreach(FallingObject o in objectsInPlanet)
+        {
+            if(o.markerInGame != null)
+            {
+                Destroy(o.markerInGame);
+            }
+
+            o.DeactivateItself();
+        }
+
+        objectsInPlanet.Clear();
+    }
     public void ResetTimerImage()
     {
         timerImage.fillAmount = 1;
@@ -112,6 +165,7 @@ public class GameManager : MonoBehaviour
     public void ResetTimer()
     {
         _timer = Timer;
+        timerImage.fillAmount = 1f;
     }
 
 
