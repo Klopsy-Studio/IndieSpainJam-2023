@@ -43,7 +43,7 @@ public class GravityBody : MonoBehaviour
 
         if (enableAttraction)
         {
-            body.constraints = RigidbodyConstraints.FreezePosition;
+            body.constraints = RigidbodyConstraints.FreezeRotation;
         }
     }
 }

@@ -16,7 +16,7 @@ public class ObjectFall : MonoBehaviour
         {
             if (collision.collider.CompareTag("Player"))
             {
-                Debug.Log("PlayerDamaged");
+                GameManager.instance.playerCharacter._playerCharacterDeath.HitPlayer();
             }
 
             if (collision.collider.CompareTag("Planet"))

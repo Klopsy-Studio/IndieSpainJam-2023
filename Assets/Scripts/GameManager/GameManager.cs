@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using Boxophobic;
 
 public class GameManager : MonoBehaviour
 {
@@ -38,6 +39,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public 
     public void UpdatePoints(float numberOfPoints)
     {
         Points += numberOfPoints;
