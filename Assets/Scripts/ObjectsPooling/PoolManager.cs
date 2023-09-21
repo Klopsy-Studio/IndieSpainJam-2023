@@ -1,6 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.ExceptionServices;
+
 using UnityEngine;
 
 public class PoolManager : MonoBehaviour
@@ -8,13 +8,9 @@ public class PoolManager : MonoBehaviour
 
     public GameObject[] objPrefabs;
     public int poolSize;
-    private Queue<GameObject> objPool = new Queue<GameObject>();
+    protected Queue<GameObject> objPool = new Queue<GameObject>();
 
-    [Header("Spawn Area")]
-    [SerializeField] float xOffset = 15f;
-    [SerializeField] float yOffset = 15f;
-    [SerializeField] float zOffset = 1f;
-
+ 
     float spawnRatio;
 
     [Space]
@@ -29,21 +25,26 @@ public class PoolManager : MonoBehaviour
         spawnRatio = Random.Range(minSpawnRation, maxSpawnRatio);
         for (int i = 0; i < poolSize; i++)
         {
-            int a = Random.Range(0, objPrefabs.Length);
-            GameObject newObj = Instantiate(objPrefabs[a], transform);
-            
-            //newObj.GetComponent<GravityBody>().attractor = GameManager.instance.planetAttractor;
-            if(newObj.TryGetComponent(out FallingObject fallingObject))
-            {
-                fallingObject.objectBody.attractor = GameManager.instance.planetAttractor;
-                fallingObject.Init(this);
-            }
-            objPool.Enqueue(newObj);
-            newObj.SetActive(false);
+            FirstInstantiations();
         }   
     }
 
-    private void Update()
+    protected virtual void FirstInstantiations()
+    {
+        int a = Random.Range(0, objPrefabs.Length);
+        GameObject newObj = Instantiate(objPrefabs[a], transform);
+
+        //newObj.GetComponent<GravityBody>().attractor = GameManager.instance.planetAttractor;
+        if (newObj.TryGetComponent(out FallingObject fallingObject))
+        {
+            fallingObject.objectBody.attractor = GameManager.instance.planetAttractor;
+            fallingObject.Init(this);
+        }
+        objPool.Enqueue(newObj);
+        newObj.SetActive(false);
+    }
+
+    protected virtual void Update()
     {
         if (enableSpawn)
         {
@@ -54,10 +55,12 @@ public class PoolManager : MonoBehaviour
                 spawnRatio = Random.Range(minSpawnRation, maxSpawnRatio);
             }
         }
+
+        Debug.Log("hello there");
     }
-    public void RandomSpawns()
+    protected virtual void RandomSpawns()
     {
-        //Vector3 newRandomPos = transform.position + new Vector3 (Random.Range(-xOffset, xOffset), Random.Range(-yOffset, yOffset), Random.Range(-zOffset, zOffset));
+        //Vector3 newRandomPos = transform.position + new Vector3(Random.Range(-xOffset, xOffset), Random.Range(-yOffset, yOffset), Random.Range(-zOffset, zOffset));
         Vector3 newRandomSurfaceSpherePos = Random.onUnitSphere * 100f;
         GameManager.instance.AddObjectToList(GetObjFromPool(newRandomSurfaceSpherePos, Quaternion.identity).GetComponent<FallingObject>()); 
     }
