@@ -75,7 +75,10 @@ public class GameManager : MonoBehaviour
     public List<FallingObject> objectsInPlanet = new List<FallingObject>();
     public List<PoolManager> pools = new List<PoolManager>();
     public PlayerCharacter playerCharacter;
-    
+
+    public Material nightMaterial;
+    public Material dayMaterial;
+
     private void Awake()
     {
         instance = this;
@@ -113,9 +116,8 @@ public class GameManager : MonoBehaviour
                     pool.enableSpawn = false;
                 }
 
-                Invoke("BeginAnotherDay", 1f);
-
-      
+                RenderSettings.skybox = dayMaterial;
+                Invoke("BeginAnotherDay", 1f);      
             }
         }
     }
@@ -123,6 +125,7 @@ public class GameManager : MonoBehaviour
     {
         dayFinished = false;
         playerCharacter.transform.position = playerCharacter.originalPosition;
+        RenderSettings.skybox = nightMaterial;
 
         foreach (PoolManager pool in pools)
         {
