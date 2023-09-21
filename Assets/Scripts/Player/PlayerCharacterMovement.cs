@@ -10,9 +10,9 @@ public class PlayerCharacterMovement : MonoBehaviour
     [SerializeField] private GameObject model;
 
     [Header("Parameters")]
-    public Vector3 moveDirection;
-    [SerializeField] float moveSpeed;
-    [SerializeField] float swallowMoveSpeed;
+    [HideInInspector] public Vector3 moveDirection;
+    public float moveSpeed;
+    public float swallowMoveSpeed;
     private float currentMoveSpeed;
 
     [SerializeField] float rotationSpeed;

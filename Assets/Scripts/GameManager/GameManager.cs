@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
     #region Points
     private float _points;
 
+    public float pointsMultiplier = 1f;
     public float Points
     {
         get
@@ -36,12 +37,13 @@ public class GameManager : MonoBehaviour
         {
             _points = value;
             pointsText.SetText(_points.ToString());
+            pointsShop.SetText(_points.ToString());
         }
     }
 
     public void UpdatePoints(float numberOfPoints)
     {
-        Points += numberOfPoints;
+        Points += numberOfPoints*pointsMultiplier;
     }
     #endregion
 
@@ -79,6 +81,9 @@ public class GameManager : MonoBehaviour
     public Material nightMaterial;
     public Material dayMaterial;
 
+
+    [SerializeField] GameObject shopCanvas;
+    [SerializeField] TextMeshProUGUI pointsShop;
     private void Awake()
     {
         instance = this;
@@ -106,10 +111,7 @@ public class GameManager : MonoBehaviour
             if (_timer <= 0)
             {
                 dayFinished = true;
-                ResetTimer();
-                AddAnotherDay();
                 ReturnAllItems();
-                ResetWeight();
 
                 foreach (PoolManager pool in pools)
                 {
@@ -117,13 +119,22 @@ public class GameManager : MonoBehaviour
                 }
 
                 RenderSettings.skybox = dayMaterial;
-                Invoke("BeginAnotherDay", 1f);      
+                Invoke("OpenShop", 1f);      
             }
         }
+    }
+
+    public void OpenShop()
+    {
+        shopCanvas.gameObject.SetActive(true);
     }
     public void BeginAnotherDay()
     {
         dayFinished = false;
+        ResetTimer();
+        ResetWeight();
+        AddAnotherDay();
+        shopCanvas.gameObject.SetActive(false);
         playerCharacter.transform.position = playerCharacter.originalPosition;
         RenderSettings.skybox = nightMaterial;
 

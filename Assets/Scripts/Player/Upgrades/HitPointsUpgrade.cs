@@ -11,4 +11,6 @@ public class HitPointsUpgrade : PlayerUpgrades
         base.UnlockUpgrade();
         character._playerCharacterDeath.playerHitPoints += healthPointIncrease;
     }
+
+    
 }
