@@ -67,7 +67,8 @@ public class GameManager : MonoBehaviour
     }
 
     #endregion
-    
+
+    public string gameScene;
     
     private void Awake()
     {
