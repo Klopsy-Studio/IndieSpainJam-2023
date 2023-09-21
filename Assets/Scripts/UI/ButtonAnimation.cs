@@ -19,6 +19,7 @@ public class ButtonAnimation : MonoBehaviour, ISelectHandler, IDeselectHandler, 
     {
         image = GetComponent<Image>();
     }
+
     public void OnSelect(BaseEventData eventData)
     {
         image.sprite = selectedSprite;
@@ -37,5 +38,6 @@ public class ButtonAnimation : MonoBehaviour, ISelectHandler, IDeselectHandler, 
         transform.localScale = Vector3.one;
         selectTween.Kill();
         transform.DOPunchScale(new Vector3(-0.1f, -0.1f, -0.1f), 0.2f).OnComplete(() => { transform.localScale = Vector3.one; });
+        image.sprite = regularSprite;
     }
 }
