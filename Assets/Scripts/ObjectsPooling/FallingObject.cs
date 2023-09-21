@@ -6,27 +6,34 @@ public class FallingObject : MonoBehaviour
 {
     public PoolManager poolManager { get; set; }
 
-    [SerializeField] float velocity = 2f;
-
-    RaycastHit raycastHit;
-    RaycastHit hit;
-    bool planetDetected = false;
-
-    public GameObject markerPrefab;
-
-    GameObject markerInGame;
-    bool detected;
-
-    public GravityBody objectBody;
+    [Header("References")]
     [SerializeField] Rigidbody rigid;
     [SerializeField] GameObject model;
+    public GameObject markerPrefab;
+    GameObject markerInGame;
+    public GravityBody objectBody;
+    [SerializeField] private GameObject explosionVFX;
+    [SerializeField] private GameObject hitVFX;
+    [SerializeField] private GameObject swallowPoofVFX;
+
+    [Header("Parameters")]
+    [SerializeField] float velocity = 2f;
+    [SerializeField] float maxRotationForce = 2f;
+    private float xAngle;
+    private float yAngle;
+    private float zAngle;
+
+    RaycastHit hit;
+    bool planetDetected = false;
+    bool detected;
+
+    
+
     public void Update()
     {
         if (!planetDetected)
         {
-            model.transform.Rotate(2, 2, 2, Space.Self);
-            //Debug.Log("Detected");
-            //rigid.AddForce(-transform.position, ForceMode.Force);
+            model.transform.Rotate(xAngle, yAngle, zAngle, Space.Self);
         }
 
         if (!detected)
@@ -34,32 +41,40 @@ public class FallingObject : MonoBehaviour
             if (Physics.Raycast(transform.position, -transform.position * 1000f, out hit))
             {
                 markerInGame = Instantiate(markerPrefab, hit.point, Quaternion.identity);
-                GetComponent<Rigidbody>().AddTorque(new Vector3(150, 150, 150), ForceMode.Force);
-
                 detected = true;
             }
         }
 
+    }
+    private void Start()
+    {
+        GetComponent<Rigidbody>().useGravity = false;
+        objectBody.EnableAttraction();
+
+        xAngle = Random.Range(-maxRotationForce, maxRotationForce);
+        yAngle = Random.Range(-maxRotationForce, maxRotationForce);
+        zAngle = Random.Range(-maxRotationForce, maxRotationForce);
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.collider.CompareTag("Planet"))
         {
-            Test();
+            Destroy(markerInGame);
+            planetDetected = true;
+
+            PlayHitVFX();
         }
     }
 
-    public void Test()
+    private void PlayHitVFX()
     {
-        Destroy(markerInGame);
-        planetDetected = true;
+        explosionVFX.SetActive(true);
+
+        hitVFX.transform.position = hit.point;
+        hitVFX.SetActive(true);
     }
-    private void Start()
-    {
-        GetComponent<Rigidbody>().useGravity = false;
-        objectBody.EnableAttraction();
-    }
+
     public void Init(PoolManager _poolManager)
     {
         poolManager = _poolManager;
@@ -67,6 +82,9 @@ public class FallingObject : MonoBehaviour
 
     public void DeactivateItself()
     {
+        GameObject swallowPoof = Instantiate(swallowPoofVFX, transform);
+        swallowPoof.transform.localScale = explosionVFX.transform.localScale;
+        swallowPoof.transform.parent = null;
         poolManager.ReturnObjToPool(this.gameObject);
     }
 
