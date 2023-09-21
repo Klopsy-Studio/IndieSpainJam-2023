@@ -6,7 +6,8 @@ using UnityEngine.SceneManagement;
 public class PlayerCharacterDeath : MonoBehaviour
 {
     [HideInInspector] public PlayerCharacter parent;
-
+    [SerializeField] private GameObject deathCam;
+    [SerializeField] private GameObject deathVFX;
 
     public int playerHitPoints = 1;
     [HideInInspector] public bool isPlayerDead;
@@ -16,14 +17,21 @@ public class PlayerCharacterDeath : MonoBehaviour
 
         if(playerHitPoints <= 0)
         {
-            PlayerDie();
+            parent.SetState(PlayerStates.Death);
         }
     }
+
     public void PlayerDie()
     {
-        //Make PlayerDie
-        //Update with animation and death screen
-        SceneManager.LoadScene(GameManager.instance.gameScene);
+        GameManager.instance.ReturnAllItems();
+        deathCam.SetActive(true);
+        StartCoroutine(InstantiateDeathVFX());
+    }
+
+    IEnumerator InstantiateDeathVFX()
+    {
+        yield return new WaitForSeconds(3f);
+        Instantiate(deathVFX, transform, false);
     }
 
     private void OnCollisionEnter(Collision collision)
