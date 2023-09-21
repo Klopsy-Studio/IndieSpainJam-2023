@@ -274,6 +274,7 @@ MonoBehaviour:
   timerImage: {fileID: 249742314}
   Timer: 60
   _timer: 0
+  gameScene: ObjectFallingTesting
 --- !u!1 &136376096
 GameObject:
   m_ObjectHideFlags: 0
@@ -934,6 +935,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1225559067 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7897378056007284136, guid: 1e85a116bac80d3479fa9598c5a9a128, type: 3}
+  m_PrefabInstance: {fileID: 14013577}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1258869102
 GameObject:
   m_ObjectHideFlags: 3
@@ -1319,7 +1325,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1661588123}
-  m_LocalRotation: {x: 0.5176838, y: 0.00000003291782, z: -0.000000019917698, w: 0.85557204}
+  m_LocalRotation: {x: 0.5176838, y: 0.000000032917818, z: -0.000000019917696, w: 0.85557204}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1832,7 +1838,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1911295613}
-  m_LocalRotation: {x: 0.5176838, y: 0.00000003291782, z: -0.000000019917696, w: 0.85557204}
+  m_LocalRotation: {x: 0.5176838, y: 0.00000003291782, z: -0.000000019917698, w: 0.85557204}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2510,12 +2516,27 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2327897416030313403, guid: 1e85a116bac80d3479fa9598c5a9a128, type: 3}
   m_PrefabInstance: {fileID: 14013577}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1225559067}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6ec93c168015af04c94619f5972cac3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2107230612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1225559067}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3c887ef7a926994395010b676479acd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parent: {fileID: 0}
+  playerHitPoints: 1
+  isPlayerDead: 0
 --- !u!1 &2146177811
 GameObject:
   m_ObjectHideFlags: 3
