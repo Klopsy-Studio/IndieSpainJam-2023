@@ -19,7 +19,8 @@ public class PlayerCharacterEat : MonoBehaviour
                         ObjectsValue value = newObject.GetComponent<ObjectsValue>();
                         _playerCharacterSwallow.parent._playerCharacterGrow.Grow(value.ReturnObjectValues().x);
                         GameManager.instance.UpdatePoints(value.ReturnObjectValues().y);
-                        Destroy(newObject.gameObject);
+
+                        newObject.GetComponent<FallingObject>().DeactivateItself();
                     }
                 }
             }
