@@ -96,8 +96,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.532827, y: 3.0843277, z: 0.35467565}
-  m_Center: {x: 0.33538175, y: -0.1889534, z: -0.3226623}
+  m_Size: {x: 1.2346158, y: 2.3376122, z: 1.1724803}
+  m_Center: {x: -0.021216512, y: -0.5623112, z: -1.1015054}
 --- !u!114 &1809763882
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -321,7 +321,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6286294736662529698}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.403, z: 1.12}
+  m_LocalPosition: {x: 0, y: 0, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -390,7 +390,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 2.532827, y: 3.0843277, z: 3.5264196}
-  m_Center: {x: 0.33538175, y: -0.1889534, z: 1.2632098}
+  m_Center: {x: 0, y: 0, z: 1}
 --- !u!1 &7897378056007284136
 GameObject:
   m_ObjectHideFlags: 0
@@ -408,6 +408,7 @@ GameObject:
   - component: {fileID: 7897378056007283792}
   - component: {fileID: 7897378056007283793}
   - component: {fileID: 2107230600}
+  - component: {fileID: 2107230612}
   m_Layer: 6
   m_Name: Player2
   m_TagString: Player
@@ -459,7 +460,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!114 &2327897416030313403
 MonoBehaviour:
@@ -477,6 +478,7 @@ MonoBehaviour:
   _playerCharacterSwallow: {fileID: 0}
   _playerCharacterAttractor: {fileID: 0}
   _playerCharacterGrow: {fileID: 0}
+  _playerCharacterDeath: {fileID: 0}
   changeToMove:
     m_PersistentCalls:
       m_Calls:
@@ -569,6 +571,7 @@ MonoBehaviour:
       m_Calls: []
   swallowCooldown: 0.5
   swallowTimer: 3
+  swallowInput: 0
 --- !u!114 &5456046082566931093
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -583,9 +586,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerCharacter: {fileID: 2327897416030313403}
   rigidbodyCmp: {fileID: 7897378056007283798}
+  model: {fileID: 2327897415442088780}
+  moveDirection: {x: 0, y: 0, z: 0}
   moveSpeed: 5
   swallowMoveSpeed: 2
-  model: {fileID: 2327897415442088780}
   rotationSpeed: 1
 --- !u!114 &2327897416030313396
 MonoBehaviour:
@@ -619,6 +623,7 @@ MonoBehaviour:
   body: {fileID: 7897378056007283798}
   enableAttraction: 1
   gravity: -10
+  freezeRotation: 0
 --- !u!114 &7897378056007283793
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -646,3 +651,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   parent: {fileID: 0}
   growthReduction: 0
+--- !u!114 &2107230612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7897378056007284136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3c887ef7a926994395010b676479acd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parent: {fileID: 0}
+  playerHitPoints: 1
+  isPlayerDead: 0

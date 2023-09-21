@@ -27,7 +27,7 @@ public class FallingObject : MonoBehaviour
     bool planetDetected = false;
     bool detected;
 
-    
+    [HideInInspector] public bool falling;
 
     public void Update()
     {
@@ -54,16 +54,19 @@ public class FallingObject : MonoBehaviour
         xAngle = Random.Range(-maxRotationForce, maxRotationForce);
         yAngle = Random.Range(-maxRotationForce, maxRotationForce);
         zAngle = Random.Range(-maxRotationForce, maxRotationForce);
+
+        falling = true;
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.collider.CompareTag("Planet"))
+        if (collision.collider.CompareTag("Planet") && !planetDetected)
         {
             Destroy(markerInGame);
             planetDetected = true;
 
             PlayHitVFX();
+            falling = false;
         }
     }
 
