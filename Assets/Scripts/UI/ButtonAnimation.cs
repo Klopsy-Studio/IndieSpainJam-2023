@@ -22,9 +22,10 @@ public class ButtonAnimation : MonoBehaviour, ISelectHandler, IDeselectHandler, 
 
     public void OnSelect(BaseEventData eventData)
     {
+        Debug.Log("Seleccionado");
         image.sprite = selectedSprite;
         transform.localScale = Vector3.one;
-        selectTween = transform.DOShakeScale(0.15f, 0.6f, 25, 90, true, ShakeRandomnessMode.Full);
+        selectTween = transform.DOShakeScale(0.15f, 0.6f, 25, 90, true, ShakeRandomnessMode.Full).SetUpdate(true);
     }
 
     public void OnDeselect(BaseEventData eventData)
@@ -37,7 +38,7 @@ public class ButtonAnimation : MonoBehaviour, ISelectHandler, IDeselectHandler, 
     {
         transform.localScale = Vector3.one;
         selectTween.Kill();
-        transform.DOPunchScale(new Vector3(-0.1f, -0.1f, -0.1f), 0.2f).OnComplete(() => { transform.localScale = Vector3.one; });
+        transform.DOPunchScale(new Vector3(-0.1f, -0.1f, -0.1f), 0.2f).OnComplete(() => { transform.localScale = Vector3.one; }).SetUpdate(true);
         image.sprite = regularSprite;
     }
 }

@@ -80,7 +80,7 @@ MonoBehaviour:
   destroyOnArrival: 0
   explosionOnArrival: 0
   explosionRange: 2.24
-  activateGizmos: 1
+  activateGizmos: 0
 --- !u!54 &1896935362519321258
 Rigidbody:
   m_ObjectHideFlags: 0

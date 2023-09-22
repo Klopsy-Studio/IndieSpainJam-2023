@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class MainMenuManager : MonoBehaviour
 {
-    [SerializeField] string gameSceneName = "GameScene";
+    [SerializeField] string gameSceneName = "Game";
     [SerializeField] GameObject mainMenuParent;
     [SerializeField] GameObject optionsMenuParent;
     [SerializeField] GameObject startGameButton;

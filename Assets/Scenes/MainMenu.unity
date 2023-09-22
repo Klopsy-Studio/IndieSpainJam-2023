@@ -2298,7 +2298,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d628d716b2a6a3499b2f9d4855c0c2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameSceneName: GameScene
+  gameSceneName: Game
   mainMenuParent: {fileID: 1179332789}
   optionsMenuParent: {fileID: 1830134452}
   startGameButton: {fileID: 435352840}
@@ -3244,7 +3244,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "T\xCDTULO DEL JUEGO"
+  m_text: "Cay\xF3 La Noche Remix - La Pantera, Quevedo, Juseph ft. Bejo, Abhir Hathi,
+    Cruz Cafun\xE9, El Ima"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 677aabbc0ba77294bb1dbca51db30187, type: 2}
   m_sharedMaterial: {fileID: -2930520063621657858, guid: 677aabbc0ba77294bb1dbca51db30187, type: 2}
@@ -3279,7 +3280,7 @@ MonoBehaviour:
   m_fontSizeMax: 72
   m_fontStyle: 1
   m_HorizontalAlignment: 2
-  m_VerticalAlignment: 512
+  m_VerticalAlignment: 4096
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0

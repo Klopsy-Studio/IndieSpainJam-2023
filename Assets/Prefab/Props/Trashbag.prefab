@@ -126,7 +126,7 @@ MonoBehaviour:
   destroyOnArrival: 0
   explosionOnArrival: 0
   explosionRange: 1.35
-  activateGizmos: 1
+  activateGizmos: 0
 --- !u!1001 &1400392156648244406
 PrefabInstance:
   m_ObjectHideFlags: 0
