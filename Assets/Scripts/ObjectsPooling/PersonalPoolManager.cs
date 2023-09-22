@@ -17,10 +17,10 @@ public class PersonalPoolManager : PoolManager
         GameManager.instance.AddObjectToList(GetObjFromPool(newRandomPos, Quaternion.identity).GetComponent<FallingObject>());
     }
 
-    protected override void FirstInstantiations()
+    protected override void FirstInstantiations(GameObject[] gameobjects)
     {
-        int a = Random.Range(0, objPrefabs.Length);
-        GameObject newObj = Instantiate(objPrefabs[a]);
+        int a = Random.Range(0, gameobjects.Length);
+        GameObject newObj = Instantiate(gameobjects[a]);
 
         //newObj.GetComponent<GravityBody>().attractor = GameManager.instance.planetAttractor;
         if (newObj.TryGetComponent(out FallingObject fallingObject))

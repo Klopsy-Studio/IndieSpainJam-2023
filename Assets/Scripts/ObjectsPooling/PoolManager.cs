@@ -6,8 +6,10 @@ using UnityEngine;
 public class PoolManager : MonoBehaviour
 {
 
-    public GameObject[] objPrefabs;
-    public int poolSize;
+    public GameObject[] smallObjPrefabs;
+    public GameObject[] mediumObjPrefabs;
+    public GameObject[] bigObjPrefabs;
+    //public int poolSize;
     protected Queue<GameObject> objPool = new Queue<GameObject>();
 
  
@@ -24,19 +26,34 @@ public class PoolManager : MonoBehaviour
     public bool enableDestructionOnArrive;
     public bool enableExplosionOnArrive;
     [HideInInspector] public float gravityIncrease;
+
+    [Header("Filter pool objects")]
+    [SerializeField] int smallObjects;
+    [SerializeField] int mediumObjects;
+    [SerializeField] int bigObjects;
     private void Start()
     {
         spawnRatio = Random.Range(minSpawnRation, maxSpawnRatio);
-        for (int i = 0; i < poolSize; i++)
+        for (int i = 0; i < smallObjects; i++)
         {
-            FirstInstantiations();
-        }   
+            FirstInstantiations(smallObjPrefabs);
+        }
+
+        for (int i = 0; i < mediumObjects; i++)
+        {
+            FirstInstantiations(mediumObjPrefabs);
+        }
+        for (int i = 0; i < bigObjects; i++)
+        {
+            FirstInstantiations(bigObjPrefabs);
+        }
     }
 
-    protected virtual void FirstInstantiations()
+    protected virtual void FirstInstantiations(GameObject[] gameObjects)
     {
-        int a = Random.Range(0, objPrefabs.Length);
-        GameObject newObj = Instantiate(objPrefabs[a], transform);
+
+        int a = Random.Range(0, gameObjects.Length);//aquí accedes a un objeto aleatorio
+        GameObject newObj = Instantiate(gameObjects[a], transform); //instancias el objeto aleatorio
 
         //newObj.GetComponent<GravityBody>().attractor = GameManager.instance.planetAttractor;
         if (newObj.TryGetComponent(out FallingObject fallingObject))
@@ -64,7 +81,7 @@ public class PoolManager : MonoBehaviour
             }
         }
     }
-    protected virtual void Update()
+    void Update()
     {
         if (enableSpawn)
         {
@@ -75,6 +92,7 @@ public class PoolManager : MonoBehaviour
                 spawnRatio = Random.Range(minSpawnRation, maxSpawnRatio);
             }
         }
+
     }
     protected virtual void RandomSpawns()
     {

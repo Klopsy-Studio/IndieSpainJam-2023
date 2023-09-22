@@ -51,6 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebfcb6b6ecf18b048b764790262ad48a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectSize: 1
   growthValue: 0.04
   kgPoints: 28.7
 --- !u!114 &-5058912969427607108

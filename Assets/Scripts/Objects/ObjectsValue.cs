@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObjectsValue : MonoBehaviour
+ class ObjectsValue : MonoBehaviour
 {
+   
     public float growthValue;
     public float kgPoints;
 
