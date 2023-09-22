@@ -90,6 +90,10 @@ MonoBehaviour:
   maxRotationForce: 2
   falling: 0
   floorCollider: {fileID: 2782913995463745473}
+  destroyOnArrival: 0
+  explosionOnArrival: 0
+  explosionRange: 0.33
+  activateGizmos: 1
 --- !u!54 &5223948393619526180
 Rigidbody:
   m_ObjectHideFlags: 0

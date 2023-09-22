@@ -160,9 +160,9 @@ RectTransform:
   m_Father: {fileID: 1449435557}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 271.0427, y: -650}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 542.0854, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &5722118
@@ -278,6 +278,7 @@ MonoBehaviour:
   upgradeNameText: {fileID: 979927870}
   upgradeCostText: {fileID: 1481663394}
   upgradeButton: {fileID: 5722118}
+  negativeEffects: {fileID: 0}
   normalSpeedIncrease: 2
   swallowSpeedIncrease: 2
 --- !u!1001 &14013577
@@ -389,13 +390,15 @@ MonoBehaviour:
   pointsText: {fileID: 1757789001}
   currentDayText: {fileID: 367826482}
   timerImage: {fileID: 249742314}
-  Timer: 60
+  Timer: 10
   _timer: 0
   pointsMultiplier: 1
+  _points: 0
   gameScene: Game
   objectsInPlanet: []
   pools:
   - {fileID: 1930172735}
+  - {fileID: 293663080}
   playerCharacter: {fileID: 2107230604}
   nightMaterial: {fileID: 2100000, guid: cc421da483ed06c49933077a621bff25, type: 2}
   dayMaterial: {fileID: 2100000, guid: 2bd8959f5fbd3644aa33af1a155fc147, type: 2}
@@ -820,6 +823,9 @@ MonoBehaviour:
   maxSpawnRatio: 6
   minSpawnRation: 3
   enableSpawn: 1
+  enableDestructionOnArrive: 0
+  enableExplosionOnArrive: 0
+  gravityIncrease: 0
   xOffset: 15
   yOffset: 1
   zOffset: 15
@@ -1569,7 +1575,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &803516723
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1647,6 +1653,7 @@ RectTransform:
   - {fileID: 1449435557}
   - {fileID: 1963255533}
   - {fileID: 1009516832}
+  - {fileID: 1375242419}
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1827,9 +1834,9 @@ RectTransform:
   m_Father: {fileID: 1449435557}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 271.0427, y: -350}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 542.0854, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &850040295
@@ -1945,6 +1952,7 @@ MonoBehaviour:
   upgradeNameText: {fileID: 133546694}
   upgradeCostText: {fileID: 1483179802}
   upgradeButton: {fileID: 850040295}
+  negativeEffects: {fileID: 0}
   timeIncrease: 15
 --- !u!1 &979927868
 GameObject:
@@ -2196,9 +2204,9 @@ RectTransform:
   m_Father: {fileID: 1449435557}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 271.0427, y: -200}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 542.0854, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1078989889
@@ -2314,6 +2322,7 @@ MonoBehaviour:
   upgradeNameText: {fileID: 813977765}
   upgradeCostText: {fileID: 355688626}
   upgradeButton: {fileID: 1078989889}
+  negativeEffects: {fileID: 0}
   growthReduction: 0.05
 --- !u!1 &1083310763
 GameObject:
@@ -6299,6 +6308,139 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1322243946}
   m_CullTransparentMesh: 1
+--- !u!1 &1375242418
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1375242419}
+  - component: {fileID: 1375242424}
+  - component: {fileID: 1375242423}
+  - component: {fileID: 1375242422}
+  - component: {fileID: 1375242421}
+  - component: {fileID: 1375242420}
+  m_Layer: 5
+  m_Name: NegativeEffects
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1375242419
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1375242418}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 803516726}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1375242420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1375242418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5a4a38aca9ea3243af691e96fd1d8c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  manager: {fileID: 0}
+  generalPoolManager: {fileID: 0}
+  playerPoolManager: {fileID: 0}
+  negativeEffectName: Now there are more objects falling
+  generalPoolIncrease:
+    poolToIncrease: {fileID: 0}
+    maxRateIncrease: 0
+    minRateIncrease: 2
+  playerPoolIncrease:
+    poolToIncrease: {fileID: 0}
+    maxRateIncrease: 0
+    minRateIncrease: 2
+--- !u!114 &1375242421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1375242418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10c1833cf6e7dd348a5e8c4cd86c06ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  manager: {fileID: 0}
+  generalPoolManager: {fileID: 0}
+  playerPoolManager: {fileID: 0}
+  negativeEffectName: Now objects create an impact zone when they fall
+--- !u!114 &1375242422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1375242418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20aba527d9d615d4a90d32b3c36eceb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  manager: {fileID: 0}
+  generalPoolManager: {fileID: 0}
+  playerPoolManager: {fileID: 0}
+  negativeEffectName: Now objects fall faster
+  gravityIncrease: -30
+--- !u!114 &1375242423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1375242418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf69711e65ea88e42bd31382ed273d32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  manager: {fileID: 0}
+  generalPoolManager: {fileID: 0}
+  playerPoolManager: {fileID: 0}
+  negativeEffectName: Now objects have a chance of destroying on arrival
+--- !u!114 &1375242424
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1375242418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1dc23c49797c99f4a9f3b368fdfff480, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  effects:
+  - {fileID: 1375242423}
+  - {fileID: 1375242422}
+  - {fileID: 1375242420}
+  - {fileID: 1375242421}
+  generalPoolManager: {fileID: 1930172735}
+  playerPoolManager: {fileID: 293663080}
 --- !u!1 &1392565978
 GameObject:
   m_ObjectHideFlags: 0
@@ -6752,9 +6894,9 @@ RectTransform:
   m_Father: {fileID: 1449435557}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 271.04272, y: -50}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 542.0854, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1549571930
@@ -6782,7 +6924,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0.2735849, g: 0.2735849, b: 0.2735849, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -6870,6 +7012,7 @@ MonoBehaviour:
   upgradeNameText: {fileID: 1322243948}
   upgradeCostText: {fileID: 1089931558}
   upgradeButton: {fileID: 1549571930}
+  negativeEffects: {fileID: 0}
   healthPointIncrease: 1
 --- !u!1 &1653226557
 GameObject:
@@ -6908,9 +7051,9 @@ RectTransform:
   m_Father: {fileID: 1449435557}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 271.0427, y: -500}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 542.0854, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1653226559
@@ -7026,6 +7169,7 @@ MonoBehaviour:
   upgradeNameText: {fileID: 470101476}
   upgradeCostText: {fileID: 1192430533}
   upgradeButton: {fileID: 1653226559}
+  negativeEffects: {fileID: 0}
   multiplierIncrease: 0.3
 --- !u!1 &1661588123
 GameObject:
@@ -7096,7 +7240,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1661588123}
-  m_LocalRotation: {x: -0.855572, y: 0.000000004453731, z: 0.0000000073606485, w: 0.517684}
+  m_LocalRotation: {x: -0.855572, y: -0.0000000044537325, z: -0.0000000073606516, w: 0.517684}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -7840,7 +7984,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1911295613}
-  m_LocalRotation: {x: -0.855572, y: 0.000000004453731, z: 0.0000000073606485, w: 0.517684}
+  m_LocalRotation: {x: -0.855572, y: -0.0000000044537325, z: -0.0000000073606516, w: 0.517684}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -8477,7 +8621,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2035764677}
-  m_LocalRotation: {x: -0.855572, y: 0.000000008907462, z: 0.000000014721299, w: 0.51768386}
+  m_LocalRotation: {x: -0.855572, y: -0.000000008907463, z: -0.000000014721301, w: 0.51768386}
   m_LocalPosition: {x: 0, y: -73.90001, z: 16.499994}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

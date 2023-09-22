@@ -4,15 +4,21 @@ using UnityEngine;
 
 public class NegativeEffect : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [HideInInspector] public NegativeEffectManager manager;
+    [HideInInspector] public PoolManager generalPoolManager;
+    [HideInInspector] public PoolManager playerPoolManager;
+
+    public string negativeEffectName;
+
+    private void Start()
     {
-        
+        manager = GetComponent<NegativeEffectManager>();
+        generalPoolManager = manager.generalPoolManager;
+        playerPoolManager = manager.playerPoolManager;
     }
 
-    // Update is called once per frame
-    void Update()
+    public virtual void ApplyEffect()
     {
-        
+        Debug.Log(negativeEffectName + " applied");
     }
 }

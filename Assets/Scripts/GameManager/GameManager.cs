@@ -23,9 +23,12 @@ public class GameManager : MonoBehaviour
     bool dayFinished;
 
     #region Points
-    private float _points;
 
     public float pointsMultiplier = 1f;
+
+    [SerializeField]
+    private float _points;
+
     public float Points
     {
         get
@@ -140,6 +143,7 @@ public class GameManager : MonoBehaviour
 
         foreach (PoolManager pool in pools)
         {
+            pool.ChangeValuesFromPools();
             pool.enableSpawn = true;
         }
     }

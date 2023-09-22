@@ -42,6 +42,7 @@ public class PlayerCharacterDeath : MonoBehaviour
             {
                 if (o.falling)
                 {
+                    o.DeactivateItself();
                     HitPlayer();
                 }
             }

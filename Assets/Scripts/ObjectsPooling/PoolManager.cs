@@ -15,11 +15,15 @@ public class PoolManager : MonoBehaviour
 
     [Space]
     [Header("Spawn Ratios")]
-    [SerializeField] float maxSpawnRatio = 5f;
-    [SerializeField] float minSpawnRation = 0f;
+    public float maxSpawnRatio = 5f;
+    public float minSpawnRation = 0f;
 
 
+    [Header("Negative Effects Variables")]
     public bool enableSpawn;
+    public bool enableDestructionOnArrive;
+    public bool enableExplosionOnArrive;
+    [HideInInspector] public float gravityIncrease;
     private void Start()
     {
         spawnRatio = Random.Range(minSpawnRation, maxSpawnRatio);
@@ -39,11 +43,27 @@ public class PoolManager : MonoBehaviour
         {
             fallingObject.objectBody.attractor = GameManager.instance.planetAttractor;
             fallingObject.Init(this);
+            fallingObject.objectBody.gravity += gravityIncrease;
+            fallingObject.destroyOnArrival = enableDestructionOnArrive;
+
         }
-        objPool.Enqueue(newObj);
+        objPool.Enqueue(newObj);    
         newObj.SetActive(false);
     }
 
+    public void ChangeValuesFromPools()
+    {
+        //Method Used to change values from negativeEffects
+        foreach(GameObject o in objPool)
+        {
+            if (o.TryGetComponent(out FallingObject fallingObject))
+            {
+                fallingObject.objectBody.gravity = gravityIncrease;
+                fallingObject.destroyOnArrival = enableDestructionOnArrive;
+                fallingObject.explosionOnArrival = enableExplosionOnArrive;
+            }
+        }
+    }
     protected virtual void Update()
     {
         if (enableSpawn)
@@ -55,8 +75,6 @@ public class PoolManager : MonoBehaviour
                 spawnRatio = Random.Range(minSpawnRation, maxSpawnRatio);
             }
         }
-
-        Debug.Log("hello there");
     }
     protected virtual void RandomSpawns()
     {
@@ -79,6 +97,4 @@ public class PoolManager : MonoBehaviour
         go.SetActive(false);
         objPool.Enqueue(go);
     }
-
-
 }

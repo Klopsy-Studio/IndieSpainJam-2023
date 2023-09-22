@@ -123,6 +123,10 @@ MonoBehaviour:
   maxRotationForce: 2
   falling: 0
   floorCollider: {fileID: 6236961556981589015}
+  destroyOnArrival: 0
+  explosionOnArrival: 0
+  explosionRange: 1.35
+  activateGizmos: 1
 --- !u!1001 &1400392156648244406
 PrefabInstance:
   m_ObjectHideFlags: 0

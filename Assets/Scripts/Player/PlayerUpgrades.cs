@@ -18,6 +18,8 @@ public class PlayerUpgrades : MonoBehaviour
     [SerializeField] TextMeshProUGUI upgradeCostText;
     [SerializeField] Button upgradeButton;
 
+    [SerializeField] NegativeEffectManager negativeEffects;
+
     private void Start()
     {
         character = GameManager.instance.playerCharacter;
@@ -27,6 +29,7 @@ public class PlayerUpgrades : MonoBehaviour
     public virtual void UnlockUpgrade()
     {
         unlocked = true;
+        upgradeButton.enabled = false;
         Debug.Log("Upgrade Unlocked");
     }
 
@@ -62,6 +65,7 @@ public class PlayerUpgrades : MonoBehaviour
         if (GameManager.instance.Points >= cost && !unlocked)
         {
             GameManager.instance.Points -= cost;
+            negativeEffects.ApplyAndRemoveRandomEffect();
             UnlockUpgrade();
         }
     }

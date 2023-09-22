@@ -30,6 +30,11 @@ public class FallingObject : MonoBehaviour
     [HideInInspector] public bool falling;
 
     public Collider floorCollider;
+
+    [HideInInspector] public bool destroyOnArrival;
+    [HideInInspector] public bool explosionOnArrival;
+    [SerializeField] float explosionRange;
+    [SerializeField] bool activateGizmos;
     public void Update()
     {
         if (!planetDetected)
@@ -69,6 +74,30 @@ public class FallingObject : MonoBehaviour
             PlayHitVFX();
             falling = false;
             floorCollider.enabled = false;
+
+            if (explosionOnArrival)
+            {
+                Collider[] explosion = Physics.OverlapSphere(transform.position, explosionRange);
+
+                for (int i = 0; i < explosion.Length; i++)
+                {
+                    if (explosion[i].CompareTag("Player"))
+                    {
+                        GameManager.instance.playerCharacter._playerCharacterDeath.HitPlayer();
+                        DeactivateItself();
+                    }
+                }
+
+            }
+            if (destroyOnArrival)
+            {
+                int chance = Random.Range(0, 100);
+                
+                if(chance <= 10)
+                {
+                    DeactivateItself();
+                }
+            }
         }
     }
 
@@ -93,5 +122,14 @@ public class FallingObject : MonoBehaviour
         poolManager.ReturnObjToPool(this.gameObject);
     }
 
-    
+
+    private void OnDrawGizmos()
+    {
+        if (activateGizmos)
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawSphere(transform.position, explosionRange);
+        }
+    }
+
 }
