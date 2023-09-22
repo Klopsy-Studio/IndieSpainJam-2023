@@ -15,6 +15,7 @@ public class FallingObject : MonoBehaviour
     [SerializeField] private GameObject explosionVFX;
     [SerializeField] private GameObject hitVFX;
     [SerializeField] private GameObject swallowPoofVFX;
+    [SerializeField] AudioSource getEatenSound;
 
     [Header("Parameters")]
     [SerializeField] float velocity = 2f;
@@ -35,6 +36,9 @@ public class FallingObject : MonoBehaviour
     [HideInInspector] public bool explosionOnArrival;
     [SerializeField] float explosionRange;
     [SerializeField] bool activateGizmos;
+
+    [HideInInspector] public bool canPlayLandingSound;
+    [SerializeField] AudioSource landingSound;
     public void Update()
     {
         if (!planetDetected)
@@ -75,6 +79,10 @@ public class FallingObject : MonoBehaviour
             falling = false;
             floorCollider.enabled = false;
 
+            if (canPlayLandingSound)
+            {
+                landingSound.Play();
+            }
             if (explosionOnArrival)
             {
                 Collider[] explosion = Physics.OverlapSphere(transform.position, explosionRange);
@@ -116,6 +124,7 @@ public class FallingObject : MonoBehaviour
 
     public void DeactivateItself()
     {
+        AudioManager.instance.Play("Eat");
         GameObject swallowPoof = Instantiate(swallowPoofVFX, transform);
         swallowPoof.transform.localScale = explosionVFX.transform.localScale;
         swallowPoof.transform.parent = null;

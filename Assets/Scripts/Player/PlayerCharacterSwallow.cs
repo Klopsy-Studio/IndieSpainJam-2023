@@ -43,7 +43,15 @@ public class PlayerCharacterSwallow : MonoBehaviour
         canSwallow = true;
     }
 
+    public void PlaySwallowSFX()
+    {
+        AudioManager.instance.Play("Swallow");
+    }
 
+    public void StopSwallowSFX()
+    {
+        AudioManager.instance.Stop("Swallow");
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (canSwallow)

@@ -17,7 +17,10 @@ public class PlayerCharacterMovement : MonoBehaviour
 
     [SerializeField] float rotationSpeed;
 
-
+    [SerializeField] List<AudioSource> moveSounds;
+    AudioSource currentMoveAudio;
+    bool movePlaying;
+    float currentMoveTimer;
     private void Start()
     {
         currentMoveSpeed = moveSpeed;
@@ -26,6 +29,27 @@ public class PlayerCharacterMovement : MonoBehaviour
 
     private void Update()
     {
+        if (moveDirection != Vector3.zero)
+        {
+            if(currentMoveAudio == null)
+            {
+                HandleMovementSound();
+            }
+            if (movePlaying)
+            {
+                currentMoveTimer -= Time.deltaTime;
+
+                if (currentMoveTimer <= 0)
+                {
+                    movePlaying = false;
+                }
+            }
+
+            else
+            {
+                HandleMovementSound();
+            }
+        }
         //if (playerCharacter.CurrentPlayerState == PlayerStates.Move || playerCharacter.CurrentPlayerState == PlayerStates.Swallow)
         //    moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")).normalized;
     }
@@ -42,4 +66,19 @@ public class PlayerCharacterMovement : MonoBehaviour
 
     public void ChangeToMoveSpeed() { currentMoveSpeed = moveSpeed; }
     public void ChangeToSwallowSpeed() { currentMoveSpeed = swallowMoveSpeed; }
+
+    public void HandleMovementSound()
+    {
+        AudioSource a = moveSounds[Random.Range(0, moveSounds.Count)];
+        
+        while(a == currentMoveAudio)
+        {
+            a = moveSounds[Random.Range(0, moveSounds.Count)];
+        }
+
+        currentMoveAudio = a;
+        currentMoveTimer = currentMoveAudio.clip.length;
+        currentMoveAudio.Play();
+        movePlaying = true;
+    }
 }
