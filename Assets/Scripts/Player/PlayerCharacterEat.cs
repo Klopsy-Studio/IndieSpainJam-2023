@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerCharacterEat : MonoBehaviour
 {
     public PlayerCharacterSwallow _playerCharacterSwallow;
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         if (_playerCharacterSwallow.canSwallow)
         {
