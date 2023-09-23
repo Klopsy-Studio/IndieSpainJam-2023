@@ -53,7 +53,6 @@ public class FallingObject : MonoBehaviour
             {
                 markerInGame = Instantiate(markerPrefab, hit.point, Quaternion.identity);
                 markerInGame.GetComponent<GravityBody>().attractor = GameManager.instance.planetAttractor;
-                Debug.Log(markerInGame.transform.position);
                 detected = true;
             }
         }

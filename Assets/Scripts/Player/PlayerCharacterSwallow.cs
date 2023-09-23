@@ -11,7 +11,7 @@ public class PlayerCharacterSwallow : MonoBehaviour
 
     [SerializeField] public List<GravityBody> objectsAttracted = new List<GravityBody>();
 
-    [SerializeField] GameObject swallowVfx;
+    [SerializeField] Animator swallowVfx;
     public void EndSwallow()
     {
         swallowArea.enabled = false;
@@ -30,12 +30,12 @@ public class PlayerCharacterSwallow : MonoBehaviour
 
     public void ActivateSwallowVFX()
     {
-        swallowVfx.SetActive(true);
+        swallowVfx.SetBool("appear", true);
     }
 
     public void DeactivateSwallowVfx()
     {
-        swallowVfx.SetActive(false);
+        swallowVfx.SetBool("appear", false);
     }
     public void ActivateSwallow()
     {

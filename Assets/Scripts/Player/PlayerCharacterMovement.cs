@@ -6,7 +6,7 @@ public class PlayerCharacterMovement : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private PlayerCharacter playerCharacter;
-    [SerializeField] private Rigidbody rigidbodyCmp;
+    [SerializeField] public Rigidbody rigidbodyCmp;
     [SerializeField] private GameObject model;
 
     [Header("Parameters")]
@@ -60,7 +60,9 @@ public class PlayerCharacterMovement : MonoBehaviour
         rigidbodyCmp.MovePosition(rigidbodyCmp.position + transform.TransformDirection(moveDirection * currentMoveSpeed * Time.deltaTime));
 
         if (moveDirection.magnitude > 0)
-            model.transform.localRotation = Quaternion.LookRotation(moveDirection.normalized*rotationSpeed, Vector3.up);
+        {
+            model.transform.localRotation = Quaternion.Slerp(model.transform.localRotation, Quaternion.LookRotation(moveDirection.normalized, Vector3.up), Time.deltaTime*rotationSpeed);
+        }
     }
 
 

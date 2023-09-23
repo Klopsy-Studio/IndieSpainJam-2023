@@ -42,7 +42,13 @@ public class InputManager : MonoBehaviour
     void MovementInput()
     {
         if (playerCharacter.CurrentPlayerState != PlayerStates.Death)
+        {
+            //Vector3 velocity = playerCharacter._playerCharacterMovement.rigidbodyCmp.velocity;
+            //Vector3 input = new Vector3(axisVector.x, 0, axisVector.y);
+            //Vector3.SmoothDamp(playerCharacter._playerCharacterMovement.moveDirection, input, ref velocity, 0.2f, 0f);
             playerCharacter._playerCharacterMovement.moveDirection = new Vector3(axisVector.x, 0, axisVector.y);
+
+        }
     }
 
     void OnSwallowInput()
