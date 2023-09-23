@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &324269802999497034
+--- !u!1 &4552027782784157768
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,8 +8,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 324269802999497037}
-  - component: {fileID: 324269802999497036}
+  - component: {fileID: 4552027782784157775}
+  - component: {fileID: 4552027782784157774}
   m_Layer: 0
   m_Name: AudioManager
   m_TagString: Untagged
@@ -17,13 +17,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &324269802999497037
+--- !u!4 &4552027782784157775
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 324269802999497034}
+  m_GameObject: {fileID: 4552027782784157768}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.415741, y: -42.159546, z: 0.47292343}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -32,18 +32,36 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &324269802999497036
+--- !u!114 &4552027782784157774
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 324269802999497034}
+  m_GameObject: {fileID: 4552027782784157768}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e742e70443d237c4a8cdbb1cb4dcae88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sfxMixer: {fileID: 0}
+  sfxMixer: {fileID: 24300002, guid: 99bf20dd44fda9d46b4dd801ef0227c0, type: 2}
   musicMixer: {fileID: 0}
-  sounds: []
+  sounds:
+  - name: Swallow
+    clip: {fileID: 8300000, guid: c4e3c3c4505fdfe4e995316573ea0b08, type: 3}
+    soundType: 0
+    loop: 0
+    playOnAwake: 0
+    originalVolume: 0
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: Eat
+    clip: {fileID: 8300000, guid: 0ddd82f1d7ef3a54bbf27a2a332c8e95, type: 3}
+    soundType: 0
+    loop: 0
+    playOnAwake: 0
+    originalVolume: 0
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
