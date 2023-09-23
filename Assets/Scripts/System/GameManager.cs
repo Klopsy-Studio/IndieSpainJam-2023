@@ -4,11 +4,13 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using Boxophobic;
+using UnityEngine.Events;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
+    
     public GravityAttractor planetAttractor;
 
     [SerializeField] TextMeshProUGUI pointsText;
@@ -21,6 +23,72 @@ public class GameManager : MonoBehaviour
 
 
     bool dayFinished;
+
+    #region GameStates
+    private GameStates _currentGameState;
+    public GameStates CurrentGameState
+    {
+        get
+        {
+            return _currentGameState;
+        }
+
+        set
+        {
+            _currentGameState = value;
+
+            switch (_currentGameState)
+            {
+                case GameStates.Night:
+                    ChangeToNight();
+                    break;
+                case GameStates.Shop:
+                    ChangeToShop();
+                    break;
+                case GameStates.Pause:
+                    ChangeToPause();
+                    break;
+                case GameStates.GameOver:
+                    ChangeToGameOver();
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
+
+    public void ChangeToNight()
+    {
+        if(playerCharacter._playerCharacterMovement!= null)
+        playerCharacter._playerCharacterMovement.ChangeToMoveSpeed();
+    }
+
+    public void ChangeToShop()
+    {
+        dayFinished = true;
+        ReturnAllItems();
+
+        foreach (PoolManager pool in pools)
+        {
+            pool.enableSpawn = false;
+        }
+
+        RenderSettings.skybox = dayMaterial;
+        playerCharacter._playerCharacterMovement.ChangeToStopSpeed();
+        Invoke("OpenShop", 1f);
+    }
+
+    public void ChangeToPause()
+    {
+        playerCharacter._playerCharacterMovement.ChangeToStopSpeed();
+    }
+
+    public void ChangeToGameOver()
+    {
+
+    }
+
+    #endregion
 
     #region Points
 
@@ -96,7 +164,7 @@ public class GameManager : MonoBehaviour
     {
         ResetTimer();
         ResetTimerImage();
-        
+        SetGameState(GameStates.Night);
 
         foreach(PoolManager pool in pools)
         {
@@ -113,16 +181,7 @@ public class GameManager : MonoBehaviour
 
             if (_timer <= 0)
             {
-                dayFinished = true;
-                ReturnAllItems();
-
-                foreach (PoolManager pool in pools)
-                {
-                    pool.enableSpawn = false;
-                }
-
-                RenderSettings.skybox = dayMaterial;
-                Invoke("OpenShop", 1f);      
+                SetGameState(GameStates.Shop);         
             }
         }
     }
@@ -131,6 +190,7 @@ public class GameManager : MonoBehaviour
     {
         shopCanvas.gameObject.SetActive(true);
     }
+
     public void BeginAnotherDay()
     {
         dayFinished = false;
@@ -146,6 +206,8 @@ public class GameManager : MonoBehaviour
             pool.ChangeValuesFromPools();
             pool.enableSpawn = true;
         }
+
+        SetGameState(GameStates.Night);
     }
     public void AddObjectToList(FallingObject o)
     {
@@ -195,5 +257,9 @@ public class GameManager : MonoBehaviour
     }
 
 
+    public void SetGameState(GameStates newState)
+    {
+        CurrentGameState = newState;
+    }
 
 }

@@ -47,7 +47,7 @@ public class InputManager : MonoBehaviour
 
     void OnSwallowInput()
     {
-        if (playerCharacter.CurrentPlayerState != PlayerStates.Death)
+        if (playerCharacter.CurrentPlayerState != PlayerStates.Death && GameManager.instance.CurrentGameState != GameStates.Pause)
             playerCharacter.swallowInput = swallowInputValue;
     }
 
@@ -55,6 +55,7 @@ public class InputManager : MonoBehaviour
     {
         if (playerCharacter.CurrentPlayerState != PlayerStates.Death)
         {
+            GameManager.instance.SetGameState(GameStates.Pause);
             UIGameplay.instance.OnPauseResumeGame();
         }
     }
