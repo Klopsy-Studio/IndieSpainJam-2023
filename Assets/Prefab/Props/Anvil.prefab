@@ -85,6 +85,9 @@ MonoBehaviour:
   activateGizmos: 0
   canPlayLandingSound: 0
   landingSound: {fileID: -1892740801713289293}
+  mask:
+    serializedVersion: 2
+    m_Bits: 759
 --- !u!54 &-4199573910116541493
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -518,6 +521,19 @@ GameObject:
   m_PrefabInstance: {fileID: 8612518464740224478}
   m_PrefabAsset: {fileID: 0}
 --- !u!65 &3765382042501340796
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8882407125676478607}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5772808, y: 0.8791366, z: 1.0263387}
+  m_Center: {x: 0.00000001490116, y: 0.0368807, z: 0.033059016}
+--- !u!65 &6200785144555048456
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

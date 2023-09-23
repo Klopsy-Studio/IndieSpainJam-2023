@@ -89,7 +89,7 @@ Material:
     - _GlossyReflections: 0
     - _INTENSITY: 1
     - _Metallic: 0
-    - _OPACITY: 1
+    - _OPACITY: 0.21
     - _OcclusionStrength: 1
     - _POWERGRAD: 0.64
     - _POWERV: 167.48
@@ -107,13 +107,13 @@ Material:
     - _intensidad: 1
     - _nolas: 12
     - _powev: 1.02
-    - _triangular: 0.17
+    - _triangular: 0.65
     - _triangular2: 3.01
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _Color0: {r: 1.8737358, g: 1.8737358, b: 1.8737358, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _SPEED: {r: 0, g: -1.35, b: 0, a: 0}
+    - _SPEED: {r: 0, g: 1.35, b: 0, a: 0}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
   m_BuildTextureStacks: []

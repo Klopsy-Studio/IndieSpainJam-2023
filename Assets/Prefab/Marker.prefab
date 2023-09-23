@@ -9,11 +9,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2025874242904285186}
-  - component: {fileID: 3064794664806686105}
-  - component: {fileID: 1113516180445105293}
-  - component: {fileID: 7728447627628450447}
-  - component: {fileID: 8017122172027914712}
   - component: {fileID: 8556767319778172113}
+  - component: {fileID: 3205083615422823100}
+  - component: {fileID: 2813711294477410882}
+  - component: {fileID: 9133244260965315596}
+  - component: {fileID: 3249571142024124045}
+  - component: {fileID: 1875937744803941370}
   m_Layer: 0
   m_Name: Marker
   m_TagString: Marker
@@ -36,15 +37,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &3064794664806686105
-MeshFilter:
+--- !u!114 &8556767319778172113
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8373936594828344591}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &1113516180445105293
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53c4f285c51cca74f9b766eabea0f981, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!23 &3205083615422823100
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -64,7 +69,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0eb1292d105f2324e94454f1c93ed159, type: 2}
+  - {fileID: 2100000, guid: a9e33eb5d5bb9ec44add047014955f5b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -86,20 +91,52 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &7728447627628450447
-BoxCollider:
+--- !u!33 &2813711294477410882
+MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8373936594828344591}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_Mesh: {fileID: 6025813205625086214, guid: 97702d0517a95d14ea578fd512306684, type: 3}
+--- !u!95 &9133244260965315596
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8373936594828344591}
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &8017122172027914712
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 624914d55038d884e8093c41c1297897, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+--- !u!114 &3249571142024124045
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8373936594828344591}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84b51fd18215b0140b1e662dc84ce854, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attractor: {fileID: 0}
+  body: {fileID: 1875937744803941370}
+  enableAttraction: 1
+  gravity: 0
+  freezeRotation: 0
+--- !u!54 &1875937744803941370
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -113,17 +150,5 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 126
+  m_Constraints: 112
   m_CollisionDetection: 0
---- !u!114 &8556767319778172113
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8373936594828344591}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53c4f285c51cca74f9b766eabea0f981, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

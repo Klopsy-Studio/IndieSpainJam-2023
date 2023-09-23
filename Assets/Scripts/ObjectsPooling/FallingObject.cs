@@ -39,6 +39,7 @@ public class FallingObject : MonoBehaviour
 
     [HideInInspector] public bool canPlayLandingSound;
     [SerializeField] AudioSource landingSound;
+    [SerializeField] LayerMask mask;
     public void Update()
     {
         if (!planetDetected && GameManager.instance.CurrentGameState != GameStates.Pause)
@@ -48,9 +49,11 @@ public class FallingObject : MonoBehaviour
 
         if (!detected)
         {
-            if (Physics.Raycast(transform.position, -transform.position * 1000f, out hit, Mathf.Infinity, 8))
+            if (Physics.Raycast(transform.position, -transform.position * 1000f, out hit, mask))
             {
                 markerInGame = Instantiate(markerPrefab, hit.point, Quaternion.identity);
+                markerInGame.GetComponent<GravityBody>().attractor = GameManager.instance.planetAttractor;
+                Debug.Log(markerInGame.transform.position);
                 detected = true;
             }
         }
@@ -79,6 +82,7 @@ public class FallingObject : MonoBehaviour
             falling = false;
             floorCollider.enabled = false;
 
+            landingSound.pitch = Random.Range(0.8f, 1.2f);
             landingSound.Play();
 
             if (explosionOnArrival)

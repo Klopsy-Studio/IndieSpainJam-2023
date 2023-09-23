@@ -131,6 +131,9 @@ MonoBehaviour:
   activateGizmos: 0
   canPlayLandingSound: 0
   landingSound: {fileID: -5356365180414205022}
+  mask:
+    serializedVersion: 2
+    m_Bits: 759
 --- !u!82 &-5356365180414205022
 AudioSource:
   m_ObjectHideFlags: 0

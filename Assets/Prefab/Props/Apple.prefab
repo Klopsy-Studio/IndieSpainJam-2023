@@ -98,6 +98,9 @@ MonoBehaviour:
   activateGizmos: 0
   canPlayLandingSound: 0
   landingSound: {fileID: -3718385698741801174}
+  mask:
+    serializedVersion: 2
+    m_Bits: 759
 --- !u!54 &5223948393619526180
 Rigidbody:
   m_ObjectHideFlags: 0
