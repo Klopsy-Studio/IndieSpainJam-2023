@@ -16,8 +16,9 @@ public class PlayerCharacterSwallow : MonoBehaviour
     {
         swallowArea.enabled = false;
         canSwallow = false;
+        parent._playerCharacterAnimations.SetAnimState("swallow", false);
 
-        if(objectsAttracted.Count > 0)
+        if (objectsAttracted.Count > 0)
         {
             foreach(GravityBody o in objectsAttracted)
             {
@@ -40,6 +41,7 @@ public class PlayerCharacterSwallow : MonoBehaviour
     public void ActivateSwallow()
     {
         swallowArea.enabled = true;
+        parent._playerCharacterAnimations.SetAnimState("swallow", true);
         canSwallow = true;
     }
 
