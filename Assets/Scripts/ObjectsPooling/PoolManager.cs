@@ -1,6 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PoolManager : MonoBehaviour
@@ -9,6 +9,8 @@ public class PoolManager : MonoBehaviour
     public GameObject[] smallObjPrefabs;
     public GameObject[] mediumObjPrefabs;
     public GameObject[] bigObjPrefabs;
+
+    protected List<GameObject> allGameObjects = new List<GameObject>();   
     //public int poolSize;
     protected Queue<GameObject> objPool = new Queue<GameObject>();
 
@@ -34,22 +36,49 @@ public class PoolManager : MonoBehaviour
     private void Start()
     {
         spawnRatio = Random.Range(minSpawnRation, maxSpawnRatio);
+        FirstInstantiations();
+    }
+
+    void FirstInstantiations()
+    {
         for (int i = 0; i < smallObjects; i++)
         {
-            FirstInstantiations(smallObjPrefabs);
+            InstantiateTypeOfGO(smallObjPrefabs);
         }
 
         for (int i = 0; i < mediumObjects; i++)
         {
-            FirstInstantiations(mediumObjPrefabs);
+            InstantiateTypeOfGO(mediumObjPrefabs);
         }
         for (int i = 0; i < bigObjects; i++)
         {
-            FirstInstantiations(bigObjPrefabs);
+            InstantiateTypeOfGO(bigObjPrefabs);
         }
+        allGameObjects =  ShuffleList(allGameObjects);
+
+        for (int i = 0; i < allGameObjects.Count; i++)
+        {
+            objPool.Enqueue(allGameObjects[i]);
+        }
+
     }
 
-    protected virtual void FirstInstantiations(GameObject[] gameObjects)
+    List<GameObject> ShuffleList(List<GameObject> gameObjecList)
+    {
+        for (int i = 0; i < gameObjecList.Count; i++)
+        {
+            int rnd = Random.Range(0, i);
+            var temp = gameObjecList[i];
+
+            gameObjecList[i] = gameObjecList[rnd];
+            gameObjecList[rnd] = temp;
+
+        }
+
+        return gameObjecList;
+    }
+
+    protected virtual void InstantiateTypeOfGO(GameObject[] gameObjects)
     {
 
         int a = Random.Range(0, gameObjects.Length);//aquí accedes a un objeto aleatorio
@@ -64,8 +93,11 @@ public class PoolManager : MonoBehaviour
             fallingObject.destroyOnArrival = enableDestructionOnArrive;
 
         }
-        objPool.Enqueue(newObj);    
+
+        allGameObjects.Add(newObj);
         newObj.SetActive(false);
+        //objPool.Enqueue(newObj);    
+        //newObj.SetActive(false);
     }
 
     public void ChangeValuesFromPools()

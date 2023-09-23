@@ -17,18 +17,37 @@ public class PersonalPoolManager : PoolManager
         GameManager.instance.AddObjectToList(GetObjFromPool(newRandomPos, Quaternion.identity).GetComponent<FallingObject>());
     }
 
-    protected override void FirstInstantiations(GameObject[] gameobjects)
+    protected override void InstantiateTypeOfGO(GameObject[] gameobjects)
     {
-        int a = Random.Range(0, gameobjects.Length);
-        GameObject newObj = Instantiate(gameobjects[a]);
+        //int a = Random.Range(0, gameobjects.Length);
+        //GameObject newObj = Instantiate(gameobjects[a]);
+
+        ////newObj.GetComponent<GravityBody>().attractor = GameManager.instance.planetAttractor;
+        //if (newObj.TryGetComponent(out FallingObject fallingObject))
+        //{
+        //    fallingObject.objectBody.attractor = GameManager.instance.planetAttractor;
+        //    fallingObject.Init(this);
+        //}
+        //objPool.Enqueue(newObj);
+        //newObj.SetActive(false);
+
+        int a = Random.Range(0, gameobjects.Length);//aquí accedes a un objeto aleatorio
+        GameObject newObj = Instantiate(gameobjects[a]); //instancias el objeto aleatorio
 
         //newObj.GetComponent<GravityBody>().attractor = GameManager.instance.planetAttractor;
         if (newObj.TryGetComponent(out FallingObject fallingObject))
         {
             fallingObject.objectBody.attractor = GameManager.instance.planetAttractor;
             fallingObject.Init(this);
+            fallingObject.objectBody.gravity += gravityIncrease;
+            fallingObject.destroyOnArrival = enableDestructionOnArrive;
+
         }
-        objPool.Enqueue(newObj);
+
+        allGameObjects.Add(newObj);
         newObj.SetActive(false);
+
+
+
     }
 }
