@@ -64,9 +64,12 @@ public class PlayerCharacterMovement : MonoBehaviour
     }
 
 
+    #region ChangeMovementSpeeds
     public void ChangeToMoveSpeed() { currentMoveSpeed = moveSpeed; }
     public void ChangeToSwallowSpeed() { currentMoveSpeed = swallowMoveSpeed; }
+    public void ChangeToStopSpeed() { currentMoveSpeed = 0; }
 
+    #endregion
     public void HandleMovementSound()
     {
         AudioSource a = moveSounds[Random.Range(0, moveSounds.Count)];
