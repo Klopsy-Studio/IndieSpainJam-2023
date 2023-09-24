@@ -693,7 +693,7 @@ MonoBehaviour:
   changeToDeath:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4935509021883528650}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlayerCharacterDeath, Assembly-CSharp
         m_MethodName: PlayerDie
         m_Mode: 1
@@ -1232,7 +1232,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   parent: {fileID: 0}
   deathCam: {fileID: 0}
-  deathVFX: {fileID: 0}
+  deathVFX: {fileID: 6855314210357232287, guid: 7c2a9b83b809a0848915fabd9596b68b, type: 3}
   playerHitPoints: 1
   isPlayerDead: 0
 --- !u!1001 &1466539017
