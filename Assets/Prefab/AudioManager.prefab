@@ -65,3 +65,30 @@ MonoBehaviour:
     volume: 1
     pitch: 1
     source: {fileID: 0}
+  - name: DayMusic
+    clip: {fileID: 8300000, guid: 945120bc54a66924f9e7044d52f8951e, type: 3}
+    soundType: 1
+    loop: 0
+    playOnAwake: 0
+    originalVolume: 0
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: DeathMusic
+    clip: {fileID: 8300000, guid: 9b0d1257804384741a349bd0f51c761f, type: 3}
+    soundType: 1
+    loop: 0
+    playOnAwake: 0
+    originalVolume: 0
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: NightMusic
+    clip: {fileID: 8300000, guid: 784ec69926c08bb4db7ac7b255b6f6e7, type: 3}
+    soundType: 1
+    loop: 0
+    playOnAwake: 0
+    originalVolume: 0
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
