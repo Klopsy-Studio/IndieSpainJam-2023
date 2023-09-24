@@ -142,6 +142,20 @@ public class AudioManager : MonoBehaviour
         Stop(sound.name);
         ResetSound(sound.name);
     }
+
+    IEnumerator FadeInSound(Sound sound)
+    {
+        sound.source.volume = 0;
+        Play(sound.name);
+
+        while (sound.source.volume <= sound.originalVolume)
+        {
+            sound.source.volume += Time.deltaTime;
+            yield return null;
+        }
+
+        sound.source.volume = sound.originalVolume;
+    }
     public void FadeOut(string name)
     {
         Sound newSound = Array.Find(sounds, sound => sound.name == name);
@@ -149,6 +163,21 @@ public class AudioManager : MonoBehaviour
         if (newSound != null)
         {
             StartCoroutine(FadeOutSound(newSound));
+        }
+
+        else
+        {
+            Debug.Log("Sound: " + name + " not found");
+        }
+    }
+
+    public void FadeIn(string name)
+    {
+        Sound newSound = Array.Find(sounds, sound => sound.name == name);
+
+        if (newSound != null)
+        {
+            StartCoroutine(FadeInSound(newSound));
         }
 
         else

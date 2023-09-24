@@ -24,8 +24,19 @@ public class PlayerCharacterDeath : MonoBehaviour
     public void PlayerDie()
     {
         GameManager.instance.ReturnAllItems();
-        deathCam.SetActive(true);
-        StartCoroutine(InstantiateDeathVFX());
+
+        if(deathCam != null)
+        {
+            deathCam.SetActive(true);
+        }
+        AudioManager.instance.FadeOut("NightMusic");
+        AudioManager.instance.FadeIn("DeathMusic");
+        GameManager.instance.SetGameState(GameStates.GameOver);
+
+        if(deathVFX != null)
+        {
+            StartCoroutine(InstantiateDeathVFX());
+        }
     }
 
     IEnumerator InstantiateDeathVFX()
