@@ -539,7 +539,6 @@ GameObject:
   - component: {fileID: 7897378056007283792}
   - component: {fileID: 7897378056007283793}
   - component: {fileID: 2107230600}
-  - component: {fileID: 2107230612}
   - component: {fileID: 2107230613}
   - component: {fileID: 2107230614}
   - component: {fileID: 2107230615}
@@ -547,6 +546,7 @@ GameObject:
   - component: {fileID: 2107230617}
   - component: {fileID: 4999372060332979597}
   - component: {fileID: 935406741263710313}
+  - component: {fileID: 4935509021883528650}
   m_Layer: 6
   m_Name: Player2
   m_TagString: Player
@@ -693,7 +693,7 @@ MonoBehaviour:
   changeToDeath:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2107230612}
+      - m_Target: {fileID: 4935509021883528650}
         m_TargetAssemblyTypeName: PlayerCharacterDeath, Assembly-CSharp
         m_MethodName: PlayerDie
         m_Mode: 1
@@ -797,23 +797,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   parent: {fileID: 0}
   growthReduction: 0
---- !u!114 &2107230612
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7897378056007284136}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3c887ef7a926994395010b676479acd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parent: {fileID: 0}
-  deathCam: {fileID: 0}
-  deathVFX: {fileID: 0}
-  playerHitPoints: 1
-  isPlayerDead: 0
 --- !u!82 &2107230613
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1235,6 +1218,23 @@ MonoBehaviour:
   playerAnim: {fileID: 998123363033050285}
   modelToRotate: {fileID: 4238891308198014482}
   rotationSpeed: 500
+--- !u!114 &4935509021883528650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7897378056007284136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b3c786b88f3a08449dc00d16843a2e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parent: {fileID: 0}
+  deathCam: {fileID: 0}
+  deathVFX: {fileID: 0}
+  playerHitPoints: 1
+  isPlayerDead: 0
 --- !u!1001 &1466539017
 PrefabInstance:
   m_ObjectHideFlags: 0
