@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
+using DG.Tweening;
 
 public class UIGameplay : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class UIGameplay : MonoBehaviour
     [SerializeField] GameObject shopMenuParent;
     [SerializeField] GameObject resumeButton;
     [SerializeField] string mainMenuSceneName = "MainMenu";
+    [SerializeField] GameObject pointsText;
 
     bool isPaused = false;
     bool inOptions = false;
@@ -45,4 +47,10 @@ public class UIGameplay : MonoBehaviour
         Time.timeScale = 1;
         SceneManager.LoadScene(mainMenuSceneName);
     }
+
+    public void PointsAnim()
+    {
+        pointsText.transform.DOPunchScale(new Vector3(0.2f, 0.2f, 0.2f), 0.2f).OnComplete(() => { pointsText.transform.localScale = Vector3.one; });
+    }
+
 }
