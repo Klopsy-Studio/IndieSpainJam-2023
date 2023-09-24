@@ -61,7 +61,16 @@ public class PlayerCharacterMovement : MonoBehaviour
 
         if (moveDirection.magnitude > 0)
         {
-            model.transform.localRotation = Quaternion.Slerp(model.transform.localRotation, Quaternion.LookRotation(moveDirection.normalized, Vector3.up), Time.deltaTime*rotationSpeed);
+            if(model != null)
+            {
+                model.transform.localRotation = Quaternion.Slerp(model.transform.localRotation, Quaternion.LookRotation(moveDirection.normalized, Vector3.up), Time.deltaTime * rotationSpeed);
+
+            }
+
+            else
+            {
+                Debug.Log("Model is null!");
+            }
         }
     }
 

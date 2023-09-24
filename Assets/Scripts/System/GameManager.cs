@@ -67,6 +67,7 @@ public class GameManager : MonoBehaviour
     {
         dayFinished = true;
         ReturnAllItems();
+        AudioManager.instance.FadeOut("NightMusic");
 
         foreach (PoolManager pool in pools)
         {
@@ -85,7 +86,12 @@ public class GameManager : MonoBehaviour
 
     public void ChangeToGameOver()
     {
+        foreach(PoolManager p in pools)
+        {
+            p.enableSpawn = false;
+        }
 
+        ReturnAllItems();
     }
 
     #endregion
@@ -165,8 +171,9 @@ public class GameManager : MonoBehaviour
         ResetTimer();
         ResetTimerImage();
         SetGameState(GameStates.Night);
+        AudioManager.instance.FadeIn("NightMusic");
 
-        foreach(PoolManager pool in pools)
+        foreach (PoolManager pool in pools)
         {
             pool.enableSpawn = true;
         }
@@ -189,6 +196,8 @@ public class GameManager : MonoBehaviour
     public void OpenShop()
     {
         shopCanvas.gameObject.SetActive(true);
+        AudioManager.instance.FadeIn("DayMusic");
+
     }
 
     public void BeginAnotherDay()
@@ -200,6 +209,8 @@ public class GameManager : MonoBehaviour
         shopCanvas.gameObject.SetActive(false);
         playerCharacter.transform.position = playerCharacter.originalPosition;
         RenderSettings.skybox = nightMaterial;
+        AudioManager.instance.FadeOut("DayMusic");
+        AudioManager.instance.FadeIn("NightMusic");
 
         foreach (PoolManager pool in pools)
         {
