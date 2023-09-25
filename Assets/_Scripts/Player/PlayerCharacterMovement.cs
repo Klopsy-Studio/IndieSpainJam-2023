@@ -29,7 +29,7 @@ public class PlayerCharacterMovement : MonoBehaviour
 
     private void Update()
     {
-        if (parent.CurrentPlayerState == PlayerStates.Death)
+        if (parent.CurrentPlayerState == PlayerStates.Death || GameManager.instance.CurrentGameState != GameStates.Night)
             return;
 
         if (moveDirection != Vector3.zero)
@@ -60,8 +60,10 @@ public class PlayerCharacterMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (parent.CurrentPlayerState == PlayerStates.Death)
+        if (parent.CurrentPlayerState == PlayerStates.Death || GameManager.instance.CurrentGameState != GameStates.Night)
             return;
+
+
 
         rigidbodyCmp.MovePosition(rigidbodyCmp.position + transform.TransformDirection(moveDirection * currentMoveSpeed * Time.deltaTime));
 

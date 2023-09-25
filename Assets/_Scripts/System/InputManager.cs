@@ -41,7 +41,7 @@ public class InputManager : MonoBehaviour
 
     void MovementInput()
     {
-        if (playerCharacter.CurrentPlayerState != PlayerStates.Death)
+        if (playerCharacter.CurrentPlayerState != PlayerStates.Death && GameManager.instance.CurrentGameState == GameStates.Night)
         {
             //Vector3 velocity = playerCharacter._playerCharacterMovement.rigidbodyCmp.velocity;
             //Vector3 input = new Vector3(axisVector.x, 0, axisVector.y);
@@ -53,7 +53,7 @@ public class InputManager : MonoBehaviour
 
     void OnSwallowInput()
     {
-        if (playerCharacter.CurrentPlayerState != PlayerStates.Death && GameManager.instance.CurrentGameState != GameStates.Pause)
+        if (playerCharacter.CurrentPlayerState != PlayerStates.Death && GameManager.instance.CurrentGameState == GameStates.Night)
             playerCharacter.swallowInput = swallowInputValue;
     }
 

@@ -61,6 +61,9 @@ public class GameManager : MonoBehaviour
     {
         if(playerCharacter._playerCharacterMovement!= null)
         playerCharacter._playerCharacterMovement.ChangeToMoveSpeed();
+
+        hudCanvas.gameObject.SetActive(true);
+
     }
 
     public void ChangeToShop()
@@ -68,7 +71,7 @@ public class GameManager : MonoBehaviour
         dayFinished = true;
         ReturnAllItems();
         AudioManager.instance.FadeOut("NightMusic");
-
+        hudCanvas.gameObject.SetActive(false);
         foreach (PoolManager pool in pools)
         {
             pool.enableSpawn = false;
@@ -159,9 +162,9 @@ public class GameManager : MonoBehaviour
     public Material nightMaterial;
     public Material dayMaterial;
 
-
+    [SerializeField] GameObject hudCanvas;
     [SerializeField] GameObject shopCanvas;
-    [SerializeField] TextMeshProUGUI pointsShop;
+    public TextMeshProUGUI pointsShop;
     private void Awake()
     {
         instance = this;
@@ -212,14 +215,18 @@ public class GameManager : MonoBehaviour
             }
         }
     }
-
+    public void DeactivateShop()
+    {
+        shopCanvas.gameObject.SetActive(false);
+    }
     public void BeginAnotherDay()
     {
         dayFinished = false;
         ResetTimer();
         ResetWeight();
         AddAnotherDay();
-        shopCanvas.gameObject.SetActive(false);
+        shopCanvas.GetComponent<Animator>().SetTrigger("disappear");
+        Invoke("DeactivateShop", 0.5f);
         playerCharacter.transform.position = playerCharacter.originalPosition;
         RenderSettings.skybox = nightMaterial;
         AudioManager.instance.FadeOut("DayMusic");

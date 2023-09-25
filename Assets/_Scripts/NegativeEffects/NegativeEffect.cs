@@ -19,6 +19,7 @@ public class NegativeEffect : MonoBehaviour
 
     public virtual void ApplyEffect()
     {
+
         Debug.Log(negativeEffectName + " applied");
     }
 }

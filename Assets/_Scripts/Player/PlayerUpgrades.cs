@@ -27,9 +27,11 @@ public class PlayerUpgrades : MonoBehaviour
     }
 
     public virtual void UnlockUpgrade()
-    {
+    {        
         unlocked = true;
-        upgradeButton.enabled = false;
+        upgradeCostText.SetText("Comprado");
+        upgradeButton.image.color = Color.green;
+        negativeEffects.ApplyAndRemoveRandomEffect();
         Debug.Log("Upgrade Unlocked");
     }
 
@@ -58,7 +60,7 @@ public class PlayerUpgrades : MonoBehaviour
 
     public void DisableButton()
     {
-        upgradeButton.interactable = false;
+        UIGameplay.instance.SelectFirstButton();
     }
 
     public void BuyUpgrade()
@@ -66,7 +68,6 @@ public class PlayerUpgrades : MonoBehaviour
         if (GameManager.instance.Points >= cost && !unlocked)
         {
             GameManager.instance.Points -= cost;
-
             UnlockUpgrade();
         }
     }

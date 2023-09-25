@@ -17,7 +17,7 @@ public class PlayerAnimations : MonoBehaviour
 
     public void RotateModel()
     {
-        if(parent._playerCharacterMovement.moveDirection != Vector3.zero && parent.CurrentPlayerState != PlayerStates.Swallow)
+        if(parent._playerCharacterMovement.moveDirection != Vector3.zero && parent.CurrentPlayerState != PlayerStates.Swallow && GameManager.instance.CurrentGameState == GameStates.Night)
         {
             modelToRotate.transform.Rotate(rotationSpeed * Time.deltaTime, 0, 0, Space.Self);
             SetAnimState("moving", true);
