@@ -42,6 +42,7 @@ public class UIGameplay : MonoBehaviour
             isPaused = false;
             Time.timeScale = 1;
             pauseMenuParent.SetActive(false);
+            GameManager.instance.SetGameState(GameStates.Night);
         }
     }
 

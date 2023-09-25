@@ -11,6 +11,7 @@ public class PlayerCharacterDeath : MonoBehaviour
 
     public int playerHitPoints = 1;
     [HideInInspector] public bool isPlayerDead;
+    [SerializeField] SceneController controller;
     public void HitPlayer()
     {
         playerHitPoints--;
@@ -23,22 +24,31 @@ public class PlayerCharacterDeath : MonoBehaviour
 
     public void PlayerDie()
     {
-        GameManager.instance.ReturnAllItems();
-
-        if(deathCam != null)
+        if (!isPlayerDead)
         {
-            deathCam.SetActive(true);
-        }
-        AudioManager.instance.FadeOut("NightMusic");
-        AudioManager.instance.FadeIn("DeathMusic");
-        GameManager.instance.SetGameState(GameStates.GameOver);
+            isPlayerDead = true;
+            Debug.Log("Die");
+            GameManager.instance.ReturnAllItems();
 
-        if(deathVFX != null)
-        {
-            StartCoroutine(InstantiateDeathVFX());
+            if (deathCam != null)
+            {
+                deathCam.SetActive(true);
+            }
+            AudioManager.instance.FadeOut("NightMusic");
+            AudioManager.instance.FadeIn("DeathMusic");
+            GameManager.instance.SetGameState(GameStates.GameOver);
+            Invoke("ChangeToDieScreen", 2f);
+            if (deathVFX != null)
+            {
+                StartCoroutine(InstantiateDeathVFX());
+            }
         }
     }
 
+    public void ChangeToDieScreen()
+    {
+        controller.LoadScene("Retry");
+    }
     IEnumerator InstantiateDeathVFX()
     {
         yield return new WaitForSeconds(3f);
