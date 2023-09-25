@@ -22,6 +22,7 @@ public class ButtonAnimation : MonoBehaviour, ISelectHandler, IDeselectHandler, 
 
     public void OnSelect(BaseEventData eventData)
     {
+        AudioManager.instance.Play("Hover");
         Debug.Log("Seleccionado");
         image.sprite = selectedSprite;
         transform.localScale = Vector3.one;
@@ -36,6 +37,7 @@ public class ButtonAnimation : MonoBehaviour, ISelectHandler, IDeselectHandler, 
 
     public void OnSubmit(BaseEventData eventData)
     {
+        AudioManager.instance.Play("Click");
         transform.localScale = Vector3.one;
         selectTween.Kill();
         transform.DOPunchScale(new Vector3(-0.1f, -0.1f, -0.1f), 0.2f).OnComplete(() => { transform.localScale = Vector3.one; }).SetUpdate(true);
