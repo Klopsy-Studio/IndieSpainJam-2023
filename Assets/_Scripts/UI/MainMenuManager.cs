@@ -7,16 +7,16 @@ using UnityEngine.UI;
 
 public class MainMenuManager : MonoBehaviour
 {
+    [SerializeField] private SceneController sceneController;
     [SerializeField] string gameSceneName = "Game";
     [SerializeField] GameObject mainMenuParent;
     [SerializeField] GameObject optionsMenuParent;
     [SerializeField] GameObject startGameButton;
     [SerializeField] GameObject returnButton;
-    [SerializeField] string sceneToLoad;
 
     public void OnGameStart()
     {
-        LoadScene();
+        sceneController.LoadScene(gameSceneName);
         mainMenuParent.SetActive(false);
     }
 
@@ -40,17 +40,5 @@ public class MainMenuManager : MonoBehaviour
         Application.Quit();
     }
 
-    IEnumerator LoadSceneAsync()
-    {
-        AsyncOperation op = SceneManager.LoadSceneAsync(sceneToLoad);
-        while (!op.isDone)
-        {
-
-            yield return null;
-        }
-    }
-    public void LoadScene()
-    {
-        StartCoroutine(LoadSceneAsync());
-    }
+    
 }
