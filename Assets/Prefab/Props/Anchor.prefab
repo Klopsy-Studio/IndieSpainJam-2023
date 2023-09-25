@@ -133,7 +133,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   growthValue: 0.04
-  kgPoints: 26.8
+  kgPoints: 26
 --- !u!82 &-8621662104764838827
 AudioSource:
   m_ObjectHideFlags: 0
