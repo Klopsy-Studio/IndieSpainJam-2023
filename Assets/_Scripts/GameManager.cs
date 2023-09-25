@@ -73,7 +73,7 @@ public class GameManager : MonoBehaviour
         {
             pool.enableSpawn = false;
         }
-
+        pointsShop.SetText(Points.ToString());
         RenderSettings.skybox = dayMaterial;
         playerCharacter._playerCharacterMovement.ChangeToStopSpeed();
         Invoke("OpenShop", 1f);
