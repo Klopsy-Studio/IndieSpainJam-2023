@@ -43,7 +43,6 @@ public class MainMenuManager : MonoBehaviour
     IEnumerator LoadSceneAsync()
     {
         AsyncOperation op = SceneManager.LoadSceneAsync(sceneToLoad);
-        op.allowSceneActivation = false;
         while (!op.isDone)
         {
 
