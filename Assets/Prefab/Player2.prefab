@@ -124,8 +124,8 @@ MonoBehaviour:
   - {fileID: 3547890825753364946, guid: 777b6fc5d0874a544aebb90a798b89b3, type: 3}
   - {fileID: 3245802918492426589, guid: 9e98f9fa561d9fb4f88f80e6676e7dcc, type: 3}
   - {fileID: 1912462987344841586, guid: f23c9a93291a5ce4fa5e5b6fee359e36, type: 3}
-  maxSpawnRatio: 6
-  minSpawnRation: 3
+  maxSpawnRatio: 0.8
+  minSpawnRation: 0.1
   enableSpawn: 1
   enableDestructionOnArrive: 0
   enableExplosionOnArrive: 0
@@ -133,9 +133,9 @@ MonoBehaviour:
   smallObjects: 600
   mediumObjects: 300
   bigObjects: 100
-  xOffset: 15
+  xOffset: 50
   yOffset: 1
-  zOffset: 15
+  zOffset: 50
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -347,7 +347,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 2, z: 2.5}
+  m_Size: {x: 1, y: 2, z: 3}
   m_Center: {x: -1, y: 1, z: 0}
 --- !u!114 &1809763882
 MonoBehaviour:
@@ -724,7 +724,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc79a6a25eb192b488baaadc8730545c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerCharacter: {fileID: 2327897416030313403}
+  parent: {fileID: 0}
   rigidbodyCmp: {fileID: 7897378056007283798}
   model: {fileID: 2261949642553071767}
   moveDirection: {x: 0, y: 0, z: 0}
@@ -796,7 +796,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 0}
+  camera: {fileID: 0}
   growthReduction: 0
+  baseCam: 0.3
+  valueLevel1: 0.5
+  valueLevel2: 2
+  cameraSpeed: 1.3
 --- !u!82 &2107230613
 AudioSource:
   m_ObjectHideFlags: 0

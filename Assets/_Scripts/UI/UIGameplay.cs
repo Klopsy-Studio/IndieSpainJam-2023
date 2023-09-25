@@ -16,12 +16,7 @@ public class UIGameplay : MonoBehaviour
     [Header("Shop")]
     [SerializeField] GameObject shopMenuParent;
     [SerializeField] GameObject[] shopButtons;
-    [SerializeField] StoreUpgrade[] upgrades;
-    [SerializeField] GameObject upgradeParent;
-    [SerializeField] GameObject negativeEffectParent;
-    [SerializeField] GameObject unlockedIconPrefab;
     [SerializeField] GameObject startNewDayButton;
-    [SerializeField] NegativeEffectManager negativeEffects;
 
     bool isPaused = false;
     bool inOptions = false;
@@ -30,14 +25,6 @@ public class UIGameplay : MonoBehaviour
     private void Awake()
     {
         instance = this;
-    }
-
-    private void Start()
-    {
-        foreach (StoreUpgrade upgrade in upgrades)
-        {
-            upgrade.FillData();
-        }
     }
 
     public void OnPauseResumeGame()
@@ -64,35 +51,6 @@ public class UIGameplay : MonoBehaviour
         isPaused = false;
         Time.timeScale = 1;
         SceneManager.LoadScene(mainMenuSceneName);
-    }
-
-    public void TryToBuy(int order)
-    {
-        if(upgrades[order].data.price <= GameManager.instance.Points)
-        {
-            Buy(order);
-            GameManager.instance.Points -= upgrades[order].data.price;
-        }
-    }
-
-    private void Buy(int _order)
-    {
-        shopButtons[_order].GetComponent<Button>().interactable = false;
-        shopButtons[_order].GetComponentInChildren<TextMeshProUGUI>().text = "---";
-        upgrades[_order].descriptionText.text = "Comprado";
-        negativeEffects.ApplyAndRemoveRandomEffect();
-        SpawnUpgradeIcon(upgrades[_order]);
-    }
-
-    public void SpawnUpgradeIcon(StoreUpgrade up)
-    {
-        GameObject go = Instantiate(unlockedIconPrefab, upgradeParent.transform);
-        go.GetComponent<Image>().sprite = up.data.iconSprite;
-    }
-
-    public void SpawnNegativeEffectIcon()
-    {
-        Instantiate(unlockedIconPrefab, negativeEffectParent.transform);
     }
 
     public void SelectFirstButton()
