@@ -32,12 +32,12 @@ public class PlayerCharacterGrow : MonoBehaviour
 
         parent.transform.localScale = new Vector3(transform.localScale.x + growth, transform.localScale.y + growth, transform.localScale.z + growth);
 
-        if(parent.transform.localScale.x >= 2)
+        if(parent.transform.localScale.x >= 3)
         {
             level1 = true;
         }
 
-        if (parent.transform.localScale.x >= 4)
+        if (parent.transform.localScale.x >= 7)
         {
             level2 = true;
         }
@@ -47,6 +47,10 @@ public class PlayerCharacterGrow : MonoBehaviour
     public void ResetCamera()
     {
         camera.m_YAxis.Value = baseCam;
+        level1 = false;
+        level2 = false;
+        level1Done = false;
+        level2Done = false;
     }
     public void Update()
     {

@@ -1769,6 +1769,7 @@ MonoBehaviour:
   parameter: MasterVolume
   parent: {fileID: 6409690241765168846}
   volumeNumber: {fileID: 6409690241431062379}
+  typeOfSlider: 1
 --- !u!1 &6409690242339091778
 GameObject:
   m_ObjectHideFlags: 0
@@ -1951,6 +1952,7 @@ MonoBehaviour:
   parameter: MasterVolume
   parent: {fileID: 6409690241774816098}
   volumeNumber: {fileID: 6409690241928045151}
+  typeOfSlider: 0
 --- !u!1 &6409690242462321889
 GameObject:
   m_ObjectHideFlags: 0
@@ -2133,6 +2135,7 @@ MonoBehaviour:
   parameter: MasterVolume
   parent: {fileID: 6409690241774816098}
   volumeNumber: {fileID: 6409690241928045151}
+  typeOfSlider: 0
 --- !u!1 &6409690242631787267
 GameObject:
   m_ObjectHideFlags: 0
@@ -2315,6 +2318,7 @@ MonoBehaviour:
   parameter: MasterVolume
   parent: {fileID: 6409690241765168846}
   volumeNumber: {fileID: 6409690241431062379}
+  typeOfSlider: 1
 --- !u!1 &6409690242751722213
 GameObject:
   m_ObjectHideFlags: 0

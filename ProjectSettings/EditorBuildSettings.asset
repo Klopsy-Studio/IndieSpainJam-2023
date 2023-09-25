@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Retry.unity
     guid: cd17ca9647bf4e14e8e3496613afeb0a
+  - enabled: 1
+    path: Assets/Scenes/Victory.unity
+    guid: ab6ab632946b1dc478d7fdacb197c1bb
   m_configObjects: {}

@@ -232,6 +232,7 @@ public class GameManager : MonoBehaviour
         AudioManager.instance.FadeOut("DayMusic");
         AudioManager.instance.FadeIn("NightMusic");
 
+        playerCharacter._playerCharacterGrow.ResetCamera();
         foreach (PoolManager pool in pools)
         {
             pool.ChangeValuesFromPools();

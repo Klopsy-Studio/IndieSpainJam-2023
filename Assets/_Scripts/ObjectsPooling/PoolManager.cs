@@ -107,7 +107,7 @@ public class PoolManager : MonoBehaviour
         {
             if (o.TryGetComponent(out FallingObject fallingObject))
             {
-                fallingObject.objectBody.gravity = gravityIncrease;
+                fallingObject.objectBody.gravity += gravityIncrease;
                 fallingObject.destroyOnArrival = enableDestructionOnArrive;
                 fallingObject.explosionOnArrival = enableExplosionOnArrive;
             }

@@ -11,6 +11,40 @@ public class VolumeSlider : MonoBehaviour
 
     [SerializeField] VolumeParent parent;
     [SerializeField] TextMeshProUGUI volumeNumber;
+    [SerializeField] SoundType typeOfSlider;
+
+
+    void Start()
+    {
+        switch (typeOfSlider)
+        {
+            case SoundType.SFX:
+
+                if(AudioManager.instance.previousSfxVolume == 0.0001)
+                {
+                    volumeNumber.SetText("Mute");
+                }
+                else
+                {
+                    volumeNumber.SetText((AudioManager.instance.previousSfxVolume * 100).ToString());
+                }
+                parent.currentVolume = AudioManager.instance.previousSfxVolume;
+                break;
+            case SoundType.Music:
+                if (AudioManager.instance.previousMusicVolume == 0.0001)
+                {
+                    volumeNumber.SetText("Mute");
+                }
+                else
+                {
+                    volumeNumber.SetText((AudioManager.instance.previousMusicVolume * 100).ToString());
+                }
+                parent.currentVolume = AudioManager.instance.previousMusicVolume;
+                break;
+            default:
+                break;
+        }
+    }
     public void ReduceVolume()
     {
         if(parent.currentVolume == 0.0001f)
@@ -81,10 +115,20 @@ public class VolumeSlider : MonoBehaviour
 
     }
 
-
-    private void Start()
+    public void SaveVolume()
     {
-        volumeNumber.SetText((parent.currentVolume * 100).ToString());
-
+        switch (typeOfSlider)
+        {
+            case SoundType.SFX:
+                AudioManager.instance.previousSfxVolume = parent.currentVolume;
+                break;
+            case SoundType.Music:
+                AudioManager.instance.previousMusicVolume = parent.currentVolume;
+                break;
+            default:
+                break;
+        }
     }
+
+
 }
