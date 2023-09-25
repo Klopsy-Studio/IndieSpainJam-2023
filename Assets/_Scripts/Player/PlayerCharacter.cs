@@ -94,6 +94,7 @@ public class PlayerCharacter : MonoBehaviour
         _playerCharacterAttractor = GetComponent<GravityAttractor>();
 
         _playerCharacterMovement = GetComponent<PlayerCharacterMovement>();
+        _playerCharacterMovement.parent = this;
 
         _playerCharacterSwallow = GetComponent<PlayerCharacterSwallow>();
         _playerCharacterSwallow.parent = this;
