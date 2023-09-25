@@ -53,7 +53,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   growthValue: 0.02
-  kgPoints: 0.7
+  kgPoints: 2
 --- !u!54 &3405691687666615823
 Rigidbody:
   m_ObjectHideFlags: 0
