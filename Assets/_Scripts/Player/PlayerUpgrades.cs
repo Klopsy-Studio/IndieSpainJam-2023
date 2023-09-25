@@ -12,11 +12,11 @@ public class PlayerUpgrades : MonoBehaviour
     [HideInInspector] public bool unlocked = false;
 
     [Header("Upgrade Variables")]
-    [SerializeField] string upgradeName;
+    [SerializeField] protected string upgradeName;
 
-    [SerializeField] TextMeshProUGUI upgradeNameText;
-    [SerializeField] TextMeshProUGUI upgradeCostText;
-    [SerializeField] Button upgradeButton;
+    [SerializeField] protected TextMeshProUGUI upgradeNameText;
+    [SerializeField] protected TextMeshProUGUI upgradeCostText;
+    [SerializeField] protected Button upgradeButton;
 
     [SerializeField] NegativeEffectManager negativeEffects;
 

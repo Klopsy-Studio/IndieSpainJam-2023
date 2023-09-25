@@ -7,7 +7,7 @@ public class MainMenuMusic : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        AudioManager.instance.Play("DayMusic");
+        AudioManager.instance.FadeIn("DayMusic");
     }
 
     // Update is called once per frame

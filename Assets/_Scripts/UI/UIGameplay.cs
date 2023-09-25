@@ -19,7 +19,7 @@ public class UIGameplay : MonoBehaviour
     [SerializeField] GameObject shopMenuParent;
     [SerializeField] GameObject[] shopButtons;
     [SerializeField] GameObject startNewDayButton;
-
+    [SerializeField] SceneController controller;
     bool isPaused = false;
     bool inOptions = false;
     bool thereIsButton = false;
@@ -53,7 +53,8 @@ public class UIGameplay : MonoBehaviour
         pauseMenuParent.SetActive(false);
         isPaused = false;
         Time.timeScale = 1;
-        SceneManager.LoadScene(mainMenuSceneName);
+        AudioManager.instance.FadeOut("NightMusic");
+        controller.LoadScene(mainMenuSceneName);
     }
 
     public void OnOptions(bool isOptions)
