@@ -58,8 +58,9 @@ public class PlayerUpgrades : MonoBehaviour
 
     public void DisableButton()
     {
-        upgradeButton.enabled = false;
+        upgradeButton.interactable = false;
     }
+
     public void BuyUpgrade()
     {
         if (GameManager.instance.Points >= cost && !unlocked)
