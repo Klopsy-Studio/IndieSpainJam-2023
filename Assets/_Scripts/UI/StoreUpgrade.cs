@@ -4,19 +4,17 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class StoreUpgrade : ScriptableObject
+public class StoreUpgrade : MonoBehaviour
 {
-    public string descriptionString;
-    public Sprite iconSprite;
-    public float price;
+    public UpgradeData data;
     public TextMeshProUGUI descriptionText;
     public Image _image;
     public TextMeshProUGUI priceText;
 
     public void FillData()
     {
-        descriptionText.text = descriptionString;
-        _image.sprite = iconSprite;
-        priceText.text = price.ToString();
+        descriptionText.text = data.descriptionString;
+        _image.sprite = data.iconSprite;
+        priceText.text = data.price.ToString();
     }
 }

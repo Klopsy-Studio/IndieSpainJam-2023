@@ -21,6 +21,7 @@ public class UIGameplay : MonoBehaviour
     [SerializeField] GameObject negativeEffectParent;
     [SerializeField] GameObject unlockedIconPrefab;
     [SerializeField] GameObject startNewDayButton;
+    [SerializeField] NegativeEffectManager negativeEffects;
 
     bool isPaused = false;
     bool inOptions = false;
@@ -67,10 +68,10 @@ public class UIGameplay : MonoBehaviour
 
     public void TryToBuy(int order)
     {
-        if(upgrades[order].price <= GameManager.instance.Points)
+        if(upgrades[order].data.price <= GameManager.instance.Points)
         {
             Buy(order);
-            GameManager.instance.Points -= upgrades[order].price;
+            GameManager.instance.Points -= upgrades[order].data.price;
         }
     }
 
@@ -79,13 +80,14 @@ public class UIGameplay : MonoBehaviour
         shopButtons[_order].GetComponent<Button>().interactable = false;
         shopButtons[_order].GetComponentInChildren<TextMeshProUGUI>().text = "---";
         upgrades[_order].descriptionText.text = "Comprado";
+        negativeEffects.ApplyAndRemoveRandomEffect();
         SpawnUpgradeIcon(upgrades[_order]);
     }
 
     public void SpawnUpgradeIcon(StoreUpgrade up)
     {
         GameObject go = Instantiate(unlockedIconPrefab, upgradeParent.transform);
-        go.GetComponent<Image>().sprite = up.iconSprite;
+        go.GetComponent<Image>().sprite = up.data.iconSprite;
     }
 
     public void SpawnNegativeEffectIcon()

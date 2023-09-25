@@ -65,7 +65,7 @@ public class PlayerUpgrades : MonoBehaviour
         if (GameManager.instance.Points >= cost && !unlocked)
         {
             GameManager.instance.Points -= cost;
-            negativeEffects.ApplyAndRemoveRandomEffect();
+
             UnlockUpgrade();
         }
     }
