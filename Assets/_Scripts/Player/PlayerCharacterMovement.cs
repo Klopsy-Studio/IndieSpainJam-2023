@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerCharacterMovement : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] private PlayerCharacter playerCharacter;
+    [HideInInspector] public PlayerCharacter parent;
     [SerializeField] public Rigidbody rigidbodyCmp;
     [SerializeField] private GameObject model;
 
@@ -29,6 +29,9 @@ public class PlayerCharacterMovement : MonoBehaviour
 
     private void Update()
     {
+        if (parent.CurrentPlayerState == PlayerStates.Death)
+            return;
+
         if (moveDirection != Vector3.zero)
         {
             if(currentMoveAudio == null)
@@ -57,6 +60,9 @@ public class PlayerCharacterMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (parent.CurrentPlayerState == PlayerStates.Death)
+            return;
+
         rigidbodyCmp.MovePosition(rigidbodyCmp.position + transform.TransformDirection(moveDirection * currentMoveSpeed * Time.deltaTime));
 
         if (moveDirection.magnitude > 0)

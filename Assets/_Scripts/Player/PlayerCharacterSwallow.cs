@@ -30,6 +30,8 @@ public class PlayerCharacterSwallow : MonoBehaviour
         }
     }
 
+
+
     public void ActivateSwallowVFX()
     {
         swallowVfx.SetBool("appear", true);
@@ -63,6 +65,23 @@ public class PlayerCharacterSwallow : MonoBehaviour
             {
                 if (other.TryGetComponent<GravityBody>(out GravityBody newObject))
                 {
+                    newObject.attractor = GameManager.instance.planetAttractor;
+                    newObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
+
+                }
+
+            }
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (canSwallow)
+        {
+            if (other.CompareTag("Object"))
+            {
+                if (other.TryGetComponent<GravityBody>(out GravityBody newObject))
+                {
                     if (!objectsAttracted.Contains(newObject))
                     {
                         objectsAttracted.Add(newObject);
@@ -74,7 +93,6 @@ public class PlayerCharacterSwallow : MonoBehaviour
             }
         }
     }
-
 
     private void OnTriggerStay(Collider other)
     {
