@@ -27,7 +27,8 @@ public class PlayerUpgrades : MonoBehaviour
     }
 
     public virtual void UnlockUpgrade()
-    {        
+    {
+        AudioManager.instance.Play("Submit");        
         unlocked = true;
         upgradeCostText.SetText("Comprado");
         upgradeButton.image.color = Color.green;
