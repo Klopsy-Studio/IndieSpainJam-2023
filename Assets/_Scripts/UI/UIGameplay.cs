@@ -10,7 +10,9 @@ public class UIGameplay : MonoBehaviour
 {
     public static UIGameplay instance;
     [SerializeField] GameObject pauseMenuParent;
+    [SerializeField] GameObject optionsMenuParent;
     [SerializeField] GameObject resumeButton;
+    [SerializeField] GameObject returnButton;
     [SerializeField] string mainMenuSceneName = "MainMenu";
 
     [Header("Shop")]
@@ -52,6 +54,22 @@ public class UIGameplay : MonoBehaviour
         isPaused = false;
         Time.timeScale = 1;
         SceneManager.LoadScene(mainMenuSceneName);
+    }
+
+    public void OnOptions(bool isOptions)
+    {
+        optionsMenuParent.SetActive(isOptions);
+        pauseMenuParent.SetActive(!isOptions);
+        inOptions = isOptions;
+
+        if (isOptions)
+        {
+            EventSystem.current.SetSelectedGameObject(returnButton);
+        }
+        else
+        {
+            EventSystem.current.SetSelectedGameObject(resumeButton);
+        }
     }
 
     public void SelectFirstButton()
