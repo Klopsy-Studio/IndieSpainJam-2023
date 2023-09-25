@@ -12,10 +12,11 @@ public class MainMenuManager : MonoBehaviour
     [SerializeField] GameObject optionsMenuParent;
     [SerializeField] GameObject startGameButton;
     [SerializeField] GameObject returnButton;
+    [SerializeField] string sceneToLoad;
 
     public void OnGameStart()
     {
-        SceneManager.LoadScene(gameSceneName);
+        LoadScene();
         mainMenuParent.SetActive(false);
     }
 
@@ -37,5 +38,20 @@ public class MainMenuManager : MonoBehaviour
     public void OnQuit()
     {
         Application.Quit();
+    }
+
+    IEnumerator LoadSceneAsync()
+    {
+        AsyncOperation op = SceneManager.LoadSceneAsync(sceneToLoad);
+
+        while (!op.isDone)
+        {
+
+            yield return null;
+        }
+    }
+    public void LoadScene()
+    {
+        StartCoroutine(LoadSceneAsync());
     }
 }
