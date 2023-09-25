@@ -14,6 +14,7 @@ public class PlayerCharacterGrow : MonoBehaviour
         if (growth <= 0) { growth = 0; }
 
         parent.transform.localScale = new Vector3(transform.localScale.x + growth, transform.localScale.y + growth, transform.localScale.z + growth);
+        GameManager.instance.HandlePoolGrowth(growth);
     }
 
 }

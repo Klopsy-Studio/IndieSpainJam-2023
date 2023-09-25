@@ -23,6 +23,7 @@ public class PlayerCharacterSwallow : MonoBehaviour
             foreach(GravityBody o in objectsAttracted)
             {
                 o.attractor = GameManager.instance.planetAttractor;
+                o.GetComponent<Rigidbody>().velocity = Vector3.zero;
             }
 
             objectsAttracted.Clear();

@@ -5,9 +5,9 @@ using UnityEngine;
 public class PersonalPoolManager : PoolManager
 {
     [Header("Spawn Area")]
-    [SerializeField] float xOffset = 15f;
-    [SerializeField] float yOffset = 15f;
-    [SerializeField] float zOffset = 1f;
+    public float xOffset = 15f;
+    public float yOffset = 15f;
+    public float zOffset = 1f;
 
    
     protected override void RandomSpawns()

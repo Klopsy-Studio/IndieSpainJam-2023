@@ -153,6 +153,7 @@ public class GameManager : MonoBehaviour
 
     public List<FallingObject> objectsInPlanet = new List<FallingObject>();
     public List<PoolManager> pools = new List<PoolManager>();
+    [SerializeField] float playerPoolGrowth;
     public PlayerCharacter playerCharacter;
 
     public Material nightMaterial;
@@ -180,7 +181,7 @@ public class GameManager : MonoBehaviour
     }
     public void Update()
     {
-        if(!dayFinished)
+        if(!dayFinished && CurrentGameState != GameStates.GameOver)
         {
             _timer -= Time.deltaTime;
 
@@ -197,7 +198,19 @@ public class GameManager : MonoBehaviour
     {
         shopCanvas.gameObject.SetActive(true);
         AudioManager.instance.FadeIn("DayMusic");
+    }
 
+
+    public void HandlePoolGrowth(float grow)
+    {
+        foreach(PoolManager p in pools)
+        {
+            if(p.TryGetComponent<PersonalPoolManager>(out PersonalPoolManager playerPool))
+            {
+                playerPool.xOffset += playerPoolGrowth*grow;
+                playerPool.zOffset += playerPoolGrowth*grow;
+            }
+        }
     }
 
     public void BeginAnotherDay()
