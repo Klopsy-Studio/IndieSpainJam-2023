@@ -5,6 +5,7 @@ using TMPro;
 using UnityEngine.UI;
 using Boxophobic;
 using UnityEngine.Events;
+using DG.Tweening;
 
 public class GameManager : MonoBehaviour
 {
@@ -63,11 +64,14 @@ public class GameManager : MonoBehaviour
         playerCharacter._playerCharacterMovement.ChangeToMoveSpeed();
 
         hudCanvas.gameObject.SetActive(true);
+        playerCharacter.light.intensity = 1;
 
     }
 
     public void ChangeToShop()
     {
+        playerCharacter.light.intensity = 3;
+
         dayFinished = true;
         ReturnAllItems();
         AudioManager.instance.FadeOut("NightMusic");
@@ -117,6 +121,8 @@ public class GameManager : MonoBehaviour
         {
             _points = value;
             pointsText.SetText(_points.ToString());
+            pointsText.gameObject.transform.DOPunchScale(new Vector3(0.1f, 0.1f, 0.1f), 0.2f);
+
             pointsShop.SetText(_points.ToString());
         }
     }
@@ -140,7 +146,7 @@ public class GameManager : MonoBehaviour
         set
         {
             _day = value;
-            currentDayText.SetText("Day: " + _day);
+            currentDayText.SetText("Noche: " + _day);
         }
     }
 

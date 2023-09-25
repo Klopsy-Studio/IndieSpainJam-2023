@@ -83,9 +83,10 @@ public class PlayerCharacter : MonoBehaviour
     }
     #endregion
 
-
+    public Light light;
     void Start()
     {
+        light.intensity = 1;
         _swallowCooldown = swallowCooldown;
         _swallowTimer = swallowTimer;
 

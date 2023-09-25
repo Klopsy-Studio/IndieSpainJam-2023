@@ -200,6 +200,10 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: 0.70897585
       objectReference: {fileID: 0}
+    - target: {fileID: 2327897416030313403, guid: 1e85a116bac80d3479fa9598c5a9a128, type: 3}
+      propertyPath: light
+      value: 
+      objectReference: {fileID: 705507994}
     - target: {fileID: 4935509021883528650, guid: 1e85a116bac80d3479fa9598c5a9a128, type: 3}
       propertyPath: deathCam
       value: 
@@ -311,7 +315,7 @@ MonoBehaviour:
   pointsText: {fileID: 1757789001}
   currentDayText: {fileID: 393655597}
   timerImage: {fileID: 1510923591}
-  Timer: 1
+  Timer: 60
   _timer: 0
   pointsMultiplier: 1
   _points: 0
@@ -1803,6 +1807,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 1342956407067554486, guid: 44778f25bb604aa47b14c0272ba6066e, type: 3}
+      propertyPath: m_text
+      value: Empezar nueva noche
+      objectReference: {fileID: 0}
     - target: {fileID: 1342956407098030918, guid: 44778f25bb604aa47b14c0272ba6066e, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -2807,7 +2815,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6593855012068260878, guid: 2d6f10f668f805e4caebc0cecd0b1dbd, type: 3}
       propertyPath: m_text
-      value: "D\xEDa: 1"
+      value: 'Noche: 1'
+      objectReference: {fileID: 0}
+    - target: {fileID: 6593855012994883887, guid: 2d6f10f668f805e4caebc0cecd0b1dbd, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 247.2608
       objectReference: {fileID: 0}
     - target: {fileID: 6593855013070406467, guid: 2d6f10f668f805e4caebc0cecd0b1dbd, type: 3}
       propertyPath: m_Name
