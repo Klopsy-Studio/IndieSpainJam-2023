@@ -59,7 +59,7 @@ public class InputManager : MonoBehaviour
 
     void OnPauseInput(InputAction.CallbackContext context)
     {
-        if (playerCharacter.CurrentPlayerState != PlayerStates.Death)
+        if (playerCharacter.CurrentPlayerState != PlayerStates.Death && GameManager.instance.CurrentGameState != GameStates.Shop)
         {
             GameManager.instance.SetGameState(GameStates.Pause);
             UIGameplay.instance.OnPauseResumeGame();
