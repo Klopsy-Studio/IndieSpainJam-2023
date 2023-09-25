@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 8b10f30213d738146ad462817534d929
+guid: acb14335b0a85c2469c1da8e6570079b
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -42,12 +42,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 200
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -103,62 +103,18 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: IMG_UI_Test_00_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 124
-        height: 124
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 60, y: 60, z: 60, w: 60}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e1b30c26214276143aa72d36c03f4be9
-      internalID: -1732497545
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: IMG_UI_Test_00_1
-      rect:
-        serializedVersion: 2
-        x: 124
-        y: 0
-        width: 124
-        height: 124
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 60, y: 60, z: 60, w: 60}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9faba2a024a0a8c45a16c9e8c978d941
-      internalID: 1974813978
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
+    sprites: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: a4f51c14967f3f340a60a48beee757d7
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      IMG_UI_Test_00_1: 1974813978
-      IMG_UI_Test_00_0: -1732497545
+    nameFileIdTable: {}
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
