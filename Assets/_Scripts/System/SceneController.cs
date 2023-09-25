@@ -63,11 +63,13 @@ public class SceneController : MonoBehaviour
 
     public void FadeOutDayMusic()
     {
+        AudioManager.instance.FadeOut("DayMusic");
 
     }
 
     public void FadeOutNightMusic()
     {
+        AudioManager.instance.FadeOut("NightMusic");
 
     }
 }

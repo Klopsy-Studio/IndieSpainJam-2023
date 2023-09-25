@@ -434,7 +434,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 639534823550063565, guid: 57cf65708a2c22b40900c208bce8f490, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 639534823550063565, guid: 57cf65708a2c22b40900c208bce8f490, type: 3}
       propertyPath: m_LocalPosition.x
@@ -479,11 +479,11 @@ PrefabInstance:
     - target: {fileID: 639534823550063566, guid: 57cf65708a2c22b40900c208bce8f490, type: 3}
       propertyPath: fade
       value: 
-      objectReference: {fileID: 832700971}
+      objectReference: {fileID: 0}
     - target: {fileID: 639534823550063566, guid: 57cf65708a2c22b40900c208bce8f490, type: 3}
       propertyPath: transition
       value: 
-      objectReference: {fileID: 1595200646}
+      objectReference: {fileID: 321955959}
     - target: {fileID: 639534823550063566, guid: 57cf65708a2c22b40900c208bce8f490, type: 3}
       propertyPath: transitionAnim
       value: 
@@ -913,7 +913,7 @@ RectTransform:
   - {fileID: 1595200647}
   - {fileID: 1738320196}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1258,6 +1258,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1113738739}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
         m_MethodName: OnGameStart
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1402595004}
+        m_TargetAssemblyTypeName: SceneController, Assembly-CSharp
+        m_MethodName: FadeOutDayMusic
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1730,7 +1742,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4552027782784157775, guid: 27bddffc24cec77499be3ea17f69f9cd, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4552027782784157775, guid: 27bddffc24cec77499be3ea17f69f9cd, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1794,18 +1806,79 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sfxMixer: {fileID: 24300002, guid: 99bf20dd44fda9d46b4dd801ef0227c0, type: 2}
   musicMixer: {fileID: 24300002, guid: fd7d187bc99b78940a7ce0962471bb03, type: 2}
-  sounds: []
---- !u!114 &832700971 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6162501867401493072, guid: 9cfa09b3f6f1f6341a5bce2c135a8702, type: 3}
-  m_PrefabInstance: {fileID: 67980187}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  sounds:
+  - name: Eat
+    clip: {fileID: 8300000, guid: 0ddd82f1d7ef3a54bbf27a2a332c8e95, type: 3}
+    soundType: 0
+    loop: 0
+    playOnAwake: 0
+    originalVolume: 0
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: Swallow
+    clip: {fileID: 8300000, guid: c4e3c3c4505fdfe4e995316573ea0b08, type: 3}
+    soundType: 0
+    loop: 0
+    playOnAwake: 0
+    originalVolume: 0
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: DayMusic
+    clip: {fileID: 8300000, guid: 945120bc54a66924f9e7044d52f8951e, type: 3}
+    soundType: 0
+    loop: 0
+    playOnAwake: 0
+    originalVolume: 0
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: NightMusic
+    clip: {fileID: 8300000, guid: 784ec69926c08bb4db7ac7b255b6f6e7, type: 3}
+    soundType: 0
+    loop: 0
+    playOnAwake: 0
+    originalVolume: 0
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: DeathMusic
+    clip: {fileID: 8300000, guid: 9b0d1257804384741a349bd0f51c761f, type: 3}
+    soundType: 0
+    loop: 0
+    playOnAwake: 0
+    originalVolume: 0
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: Submit
+    clip: {fileID: 8300000, guid: 9756eaa49b3ada04283ea81cefb87b66, type: 3}
+    soundType: 0
+    loop: 0
+    playOnAwake: 0
+    originalVolume: 0
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: Click
+    clip: {fileID: 8300000, guid: 4585994854c278942b4be89661b6c247, type: 3}
+    soundType: 0
+    loop: 0
+    playOnAwake: 0
+    originalVolume: 0
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: Hover
+    clip: {fileID: 8300000, guid: 0fa8727c1d28d3f4098c8f407d5c2e08, type: 3}
+    soundType: 0
+    loop: 0
+    playOnAwake: 0
+    originalVolume: 0
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
 --- !u!1 &853746377
 GameObject:
   m_ObjectHideFlags: 0
@@ -2058,6 +2131,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 918242433}
   m_CullTransparentMesh: 1
+--- !u!1 &945985230
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 945985232}
+  - component: {fileID: 945985231}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &945985231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 945985230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc6b1657904282d4ea18836b63c6b2f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &945985232
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 945985230}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 978.8721, y: 540, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &964921300
 GameObject:
   m_ObjectHideFlags: 0
@@ -2237,7 +2354,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d628d716b2a6a3499b2f9d4855c0c2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneController: {fileID: 0}
+  sceneController: {fileID: 1402595004}
   gameSceneName: Game
   mainMenuParent: {fileID: 1179332789}
   optionsMenuParent: {fileID: 1830134452}
@@ -2294,53 +2411,6 @@ Transform:
   m_Father: {fileID: 1113738740}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1277309636
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1277309637}
-  - component: {fileID: 1277309638}
-  m_Layer: 0
-  m_Name: SceneManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1277309637
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1277309636}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1277309638
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1277309636}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bdf9513db7e69464ab5fb2656e38889b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  transition: {fileID: 0}
-  transitionAnim: {fileID: 0}
-  fade: {fileID: 0}
 --- !u!1 &1359758395
 GameObject:
   m_ObjectHideFlags: 0
@@ -2702,6 +2772,17 @@ MonoBehaviour:
   randomness: 1
   fadeOut: 0
   randomnessMode: 1
+--- !u!114 &1402595004 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 639534823550063566, guid: 57cf65708a2c22b40900c208bce8f490, type: 3}
+  m_PrefabInstance: {fileID: 211195387}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdf9513db7e69464ab5fb2656e38889b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1409145527
 GameObject:
   m_ObjectHideFlags: 0
@@ -2803,11 +2884,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!1 &1595200646 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6162501866730793209, guid: 9cfa09b3f6f1f6341a5bce2c135a8702, type: 3}
-  m_PrefabInstance: {fileID: 67980187}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &1595200647 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6162501866730793210, guid: 9cfa09b3f6f1f6341a5bce2c135a8702, type: 3}
